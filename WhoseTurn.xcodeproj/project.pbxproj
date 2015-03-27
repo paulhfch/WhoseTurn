@@ -17,6 +17,11 @@
 		166E03CF1AC237A200169F33 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 166E03CE1AC237A200169F33 /* Images.xcassets */; };
 		166E03D21AC237A200169F33 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 166E03D01AC237A200169F33 /* LaunchScreen.xib */; };
 		166E03DE1AC237A200169F33 /* WhoseTurnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166E03DD1AC237A200169F33 /* WhoseTurnTests.swift */; };
+		16A1B34C1AC58BB300C36D95 /* NewPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A1B34B1AC58BB300C36D95 /* NewPaymentViewController.swift */; };
+		16A1B34E1AC5AAE900C36D95 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A1B34D1AC5AAE900C36D95 /* Payment.swift */; };
+		16A1B3511AC5B0C400C36D95 /* PayorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A1B3501AC5B0C400C36D95 /* PayorPickerViewController.swift */; };
+		16A1B3591AC5C10300C36D95 /* InputToolBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A1B3571AC5C10300C36D95 /* InputToolBarViewController.swift */; };
+		16A1B35A1AC5C10300C36D95 /* InputToolBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16A1B3581AC5C10300C36D95 /* InputToolBarViewController.xib */; };
 		16D644E91AC4D8C200BE0E0F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D644E81AC4D8C200BE0E0F /* ProfileViewController.swift */; };
 		E79FCF117FB6D94358448040 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A41D6344AB15F1FF7D817C77 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -49,6 +54,11 @@
 		166E03D71AC237A200169F33 /* WhoseTurnTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhoseTurnTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		166E03DC1AC237A200169F33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		166E03DD1AC237A200169F33 /* WhoseTurnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhoseTurnTests.swift; sourceTree = "<group>"; };
+		16A1B34B1AC58BB300C36D95 /* NewPaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPaymentViewController.swift; sourceTree = "<group>"; };
+		16A1B34D1AC5AAE900C36D95 /* Payment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
+		16A1B3501AC5B0C400C36D95 /* PayorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayorPickerViewController.swift; sourceTree = "<group>"; };
+		16A1B3571AC5C10300C36D95 /* InputToolBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputToolBarViewController.swift; sourceTree = "<group>"; };
+		16A1B3581AC5C10300C36D95 /* InputToolBarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputToolBarViewController.xib; sourceTree = "<group>"; };
 		16D644E81AC4D8C200BE0E0F /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		A41D6344AB15F1FF7D817C77 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -85,6 +95,7 @@
 			children = (
 				162B728F1AC4AD6A00A70899 /* User.swift */,
 				162B72911AC4AF6900A70899 /* Group.swift */,
+				16A1B34D1AC5AAE900C36D95 /* Payment.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -118,6 +129,7 @@
 				166E03C71AC237A200169F33 /* AppDelegate.swift */,
 				166E03CB1AC237A200169F33 /* Main.storyboard */,
 				166E03D01AC237A200169F33 /* LaunchScreen.xib */,
+				16A1B34F1AC5B0AE00C36D95 /* Utils */,
 				166E03C51AC237A200169F33 /* Supporting Files */,
 			);
 			path = WhoseTurn;
@@ -156,8 +168,27 @@
 				162B728B1AC4A70E00A70899 /* GroupsViewController.swift */,
 				162B72931AC4CDAC00A70899 /* MembersViewController.swift */,
 				16D644E81AC4D8C200BE0E0F /* ProfileViewController.swift */,
+				16A1B34B1AC58BB300C36D95 /* NewPaymentViewController.swift */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		16A1B34F1AC5B0AE00C36D95 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				16A1B3541AC5B85F00C36D95 /* InputToolbar */,
+				16A1B3501AC5B0C400C36D95 /* PayorPickerViewController.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		16A1B3541AC5B85F00C36D95 /* InputToolbar */ = {
+			isa = PBXGroup;
+			children = (
+				16A1B3571AC5C10300C36D95 /* InputToolBarViewController.swift */,
+				16A1B3581AC5C10300C36D95 /* InputToolBarViewController.xib */,
+			);
+			name = InputToolbar;
 			sourceTree = "<group>";
 		};
 		54A9EA3F9458E3829112B2B1 /* Frameworks */ = {
@@ -259,6 +290,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16A1B35A1AC5C10300C36D95 /* InputToolBarViewController.xib in Resources */,
 				166E03CD1AC237A200169F33 /* Main.storyboard in Resources */,
 				166E03D21AC237A200169F33 /* LaunchScreen.xib in Resources */,
 				166E03CF1AC237A200169F33 /* Images.xcassets in Resources */,
@@ -312,12 +344,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16A1B34C1AC58BB300C36D95 /* NewPaymentViewController.swift in Sources */,
 				162B72901AC4AD6A00A70899 /* User.swift in Sources */,
 				166E03CA1AC237A200169F33 /* LoginViewController.swift in Sources */,
 				166E03C81AC237A200169F33 /* AppDelegate.swift in Sources */,
+				16A1B3511AC5B0C400C36D95 /* PayorPickerViewController.swift in Sources */,
+				16A1B3591AC5C10300C36D95 /* InputToolBarViewController.swift in Sources */,
 				162B72921AC4AF6900A70899 /* Group.swift in Sources */,
 				16D644E91AC4D8C200BE0E0F /* ProfileViewController.swift in Sources */,
 				162B72941AC4CDAC00A70899 /* MembersViewController.swift in Sources */,
+				16A1B34E1AC5AAE900C36D95 /* Payment.swift in Sources */,
 				162B728C1AC4A70E00A70899 /* GroupsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

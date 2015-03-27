@@ -13,10 +13,6 @@ let groupColumnKey = "groups"
 
 class User : PFUser {
     
-    class func register() {
-        registerSubclass()
-    }
-    
     func getGroups() -> [String]! {
         return objectForKey( groupColumnKey ) as [String]!
     }

@@ -55,12 +55,5 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             destViewController.groups = user.getGroups()
         }
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
 }
 

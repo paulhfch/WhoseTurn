@@ -2,15 +2,19 @@ PODS:
   - Bolts (1.1.4)
   - Parse (1.7.0):
     - Bolts (~> 1.1)
+  - ParseCrashReporting (1.7.0):
+    - Parse (~> 1.7.0)
   - TPKeyboardAvoiding (1.2.6)
 
 DEPENDENCIES:
   - Parse
+  - ParseCrashReporting
   - TPKeyboardAvoiding
 
 SPEC CHECKSUMS:
   Bolts: dd9fb8433d67f5acc3b6b4d1379bbc5513d716c1
   Parse: 3c2d4e6ade7b59d31c0bc8106340c6b81b31bc0f
+  ParseCrashReporting: 9118391db9867e693bb6a8fb45000a95fab09681
   TPKeyboardAvoiding: 0797ad5f2366e2435e605202b01f3b7cff5d82cd
 
 COCOAPODS: 0.36.0

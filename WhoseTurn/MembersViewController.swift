@@ -6,13 +6,14 @@
 //  Copyright (c) 2015 PopoWorks. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 let memberCellIdentifier = "memberCell"
 let showProfileSegueId = "showProfile"
+let showNewPaymentSegueId = "showNewPayment"
 
 class MembersViewController : UITableViewController {
-    var groupName : String!
+    var group : String!
     var members : [User]!
     
     @IBOutlet weak var navToolBar: UIToolbar!
@@ -20,7 +21,7 @@ class MembersViewController : UITableViewController {
     override func viewDidLoad() {
         configureNavBar()
         
-        Group( name: groupName ).getMembers { (members) -> Void in
+        Group( name: group ).getMembers { (members) -> Void in
             self.members = members
             
             self.tableView.reloadData()
@@ -30,7 +31,7 @@ class MembersViewController : UITableViewController {
     }
     
     private func configureNavBar() {
-        self.title = groupName
+        self.title = group
 
         // http://stackoverflow.com/a/14448645
         // Removes UIToolBar top border line
@@ -75,6 +76,13 @@ class MembersViewController : UITableViewController {
             var destViewController = segue.destinationViewController as ProfileViewController
             
             destViewController.memberName = sender as String
+        }
+        
+        if segue.identifier == showNewPaymentSegueId {
+            var destViewController = segue.destinationViewController as NewPaymentViewController
+            
+            destViewController.group = group
+            destViewController.members = members
         }
     }
 }

@@ -7,3 +7,6 @@
 //
 
 #import <Parse/Parse.h>
+//http://stackoverflow.com/a/25388866
+#import <Parse/PFObject+Subclass.h>
+#import <ParseCrashReporting/ParseCrashReporting.h>

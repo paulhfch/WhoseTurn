@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 PopoWorks. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class ProfileViewController : UITableViewController {
     var memberName : String!
@@ -20,5 +20,4 @@ class ProfileViewController : UITableViewController {
     private func configureNavBar() {
         self.title = memberName
     }
-    
 }

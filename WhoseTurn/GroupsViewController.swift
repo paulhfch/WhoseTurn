@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 PopoWorks. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 let groupCellIdentifier = "groupCell"
 let showMemberSegueId = "showMembers"
@@ -48,7 +48,7 @@ class GroupsViewController : UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == showMemberSegueId {
             var destViewController = segue.destinationViewController as MembersViewController
-            destViewController.groupName = sender as String
+            destViewController.group = sender as String
         }
     }
 }

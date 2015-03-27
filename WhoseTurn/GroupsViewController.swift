@@ -14,18 +14,7 @@ let showMemberSegueId = "showMembers"
 class GroupsViewController : UITableViewController {
     var groups: [String]!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        configureNavBar()
-    }
-    
-    private func configureNavBar() {
-        let logoutButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Stop, target: self, action: "logout" )
-        navigationItem.rightBarButtonItem = logoutButton
-    }
-    
-    @objc private func logout() {
+    @IBAction func onLogoutButtonTapped(sender: AnyObject) {
         User.logOut()
         dismissViewControllerAnimated( true, completion: nil )
     }

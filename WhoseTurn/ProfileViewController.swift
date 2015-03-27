@@ -8,6 +8,17 @@
 
 import Foundation
 
-class ProfileViewController : UIViewController {
+class ProfileViewController : UITableViewController {
+    var memberName : String!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        configureNavBar()
+    }
+    
+    private func configureNavBar() {
+        self.title = memberName
+    }
     
 }

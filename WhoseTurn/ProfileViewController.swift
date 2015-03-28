@@ -9,15 +9,38 @@
 import UIKit
 
 class ProfileViewController : UITableViewController {
-    var memberName : String!
+    var member: String!
+    var group: String!
+    var payments: [Payment]!
+    
+    @IBOutlet weak var lastPaymentLabel: UILabel!
+    @IBOutlet weak var numberOfPaymentsLabel: UILabel!
+    @IBOutlet weak var owingLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureNavBar()
+        fetchPaymentRecords()
     }
     
     private func configureNavBar() {
-        self.title = memberName
+        self.title = member
+    }
+    
+    private func fetchPaymentRecords() {
+        Payment.getPaymentsFor( member, group: group) { ( payments:[Payment]) -> Void in
+            self.payments = payments
+            
+            self.updateView()
+        }
+    }
+    
+    private func updateView(){
+        if let lastPayment = Payment.getLatestPaymentFrom( payments ) {
+            lastPaymentLabel.text = "\(DayFormatter.stringFromDate( lastPayment.date ))"
+        }
+        
+        numberOfPaymentsLabel.text = "\(payments.count)"
     }
 }

@@ -13,20 +13,32 @@ let showProfileSegueId = "showProfile"
 let showNewPaymentSegueId = "showNewPayment"
 
 class MembersViewController : UITableViewController {
-    var group : String!
-    var members : [User]!
+    var group: String!
+    var payments: [String:[Payment]]?
+    var members = [User]()
+    var nextMemberToPay: String!
     
     @IBOutlet weak var navToolBar: UIToolbar!
     
+    // MARK: UIViewController
     override func viewDidLoad() {
         configureNavBar()
+    }
+    
+    // Make sure to refetch data when the view appears
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear( animated )
         
+        //MARK: TODO use promise?
         Group( name: group ).getMembers { (members) -> Void in
             self.members = members
             
-            self.tableView.reloadData()
-            
-            // MARK: TODO determine who's next to pay
+            Payment.getPaymentsForEveryoneIn( self.group, callback: { ( payments: [String : [Payment]]) -> Void in
+                self.payments = payments
+                self.nextMemberToPay = self.getNextToPay( members, payments )
+                
+                self.tableView.reloadData()
+            })
         }
     }
     
@@ -38,44 +50,12 @@ class MembersViewController : UITableViewController {
         navToolBar.clipsToBounds = true
     }
     
-    @IBAction func onAddPaymentRecordButtonTapped(sender: AnyObject) {
-        
-    }
-    
-    @IBAction func onAddMemberButtonTapped(sender: AnyObject) {
-        
-    }
-    
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let memberArray = members {
-            return memberArray.count
-        }
-        else {
-            return 0
-        }
-    }
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let index = indexPath.row
-        var cell = tableView.dequeueReusableCellWithIdentifier( memberCellIdentifier ) as MemberCell
-        
-        cell.memberNameLabel.text = members[index].username
-        cell.nextToPayLabel.hidden = true
-        
-        return cell
-    }
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath( indexPath ) as MemberCell
-        
-        performSegueWithIdentifier( showProfileSegueId, sender: cell.memberNameLabel.text )
-    }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == showProfileSegueId {
             var destViewController = segue.destinationViewController as ProfileViewController
             
-            destViewController.memberName = sender as String
+            destViewController.member = sender as String
+            destViewController.group = group
         }
         
         if segue.identifier == showNewPaymentSegueId {
@@ -84,6 +64,68 @@ class MembersViewController : UITableViewController {
             destViewController.group = group
             destViewController.members = members
         }
+    }
+    
+    // MARK: UITableViewDataSource
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return members.count
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let index = indexPath.row
+        var cell = tableView.dequeueReusableCellWithIdentifier( memberCellIdentifier ) as MemberCell
+        
+        let memberName = members[index].username
+        
+        cell.memberNameLabel.text = memberName
+        cell.nextToPayLabel.hidden = memberName != self.nextMemberToPay
+        
+        return cell
+    }
+    
+    /**
+        The member who owes the most and hasn't paid lately is the next to pay
+    */
+    private func getNextToPay( members: [User], _ payments: [String:[Payment]] ) -> String {
+        // criteria is an array of ( member, numberOfPayments, latestPaymentDate )
+        var criteria = [(String, Int, NSDate )]()
+        
+        for member in members {
+            let memberName = member.username
+            
+            //MARK: unwrap multiple optionals - swift 1.2?
+            if let paymentsOfMember = payments[memberName] {
+                if let latestPayment = Payment.getLatestPaymentFrom( paymentsOfMember ){
+                     criteria.append( ( memberName, paymentsOfMember.count, latestPayment.date ) )
+                }
+                else {
+                    criteria.append( ( memberName, paymentsOfMember.count, NSDate( timeIntervalSince1970: 0 ) ) )
+                }
+            }
+            else {
+                criteria.append( ( memberName, 0, NSDate( timeIntervalSince1970: 0 ) ) )
+            }
+        }
+        
+        criteria.sort {
+            let ( _, thisNumberOfPayments, thisLatestPaymentDate ) = $0
+            let ( _, thatNumberOfPayments, thatLatestPaymentDate ) = $1
+            
+            if thisNumberOfPayments == thatNumberOfPayments {
+                return thisLatestPaymentDate.compare( thatLatestPaymentDate ) == NSComparisonResult.OrderedAscending
+            }
+            
+            return thisNumberOfPayments < thatNumberOfPayments
+        }
+        
+        return criteria.first!.0 // return username of the member
+    }
+    
+    // MARK: UITableViewDelegate
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = tableView.cellForRowAtIndexPath( indexPath ) as MemberCell
+        
+        performSegueWithIdentifier( showProfileSegueId, sender: cell.memberNameLabel.text )
     }
 }
 

@@ -16,4 +16,5 @@ class User : PFUser {
     func getGroups() -> [String]! {
         return objectForKey( groupColumnKey ) as [String]!
     }
+
 }

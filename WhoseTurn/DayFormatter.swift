@@ -12,7 +12,7 @@ class DayFormatter {
     
     class func getFormatter() -> NSDateFormatter {
         let formatter = NSDateFormatter()
-        formatter.dateFormat = "EEEE MMMM dd, yyyy"
+        formatter.dateFormat = "EEEE MMM dd, yyyy"
         
         return formatter
     }

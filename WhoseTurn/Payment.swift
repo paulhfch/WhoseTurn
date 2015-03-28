@@ -10,10 +10,12 @@ import Foundation
 
 class Payment : PFObject, PFSubclassing {
     
-    var payor: String!
-    var group: String!
-    var restaurant: String!
-    var date: NSDate!
+    // http://stackoverflow.com/a/24646298
+    // Have to use @NSManaged to save to Parse
+    @NSManaged var payor: String!
+    @NSManaged var group: String!
+    @NSManaged var restaurant: String!
+    @NSManaged var date: NSDate!
     
     class func parseClassName() -> String! {
         return "Payment"

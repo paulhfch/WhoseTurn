@@ -10,10 +10,18 @@ import Foundation
 
 class DayFormatter {
     
-    class func stringFromDate( date: NSDate ) -> String {
+    class func getFormatter() -> NSDateFormatter {
         let formatter = NSDateFormatter()
-        formatter.setLocalizedDateFormatFromTemplate( "yyyy-MMM-dd EEEE" )
+        formatter.dateFormat = "EEEE MMMM dd, yyyy"
         
-        return formatter.stringFromDate( date )
+        return formatter
+    }
+    
+    class func stringFromDate( date: NSDate ) -> String {
+        return getFormatter().stringFromDate( date )
+    }
+    
+    class func dateFromString( dateString: String ) -> NSDate {
+        return getFormatter().dateFromString( dateString )!
     }
 }

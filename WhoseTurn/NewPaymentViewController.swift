@@ -20,6 +20,7 @@ class NewPaymentViewController : UITableViewController {
     var payorPickerToolbar: InputToolBarViewController!
     var datePicker: DatePicker!
     
+    // MARK: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,12 +41,27 @@ class NewPaymentViewController : UITableViewController {
         dateTextBox.inputView = datePicker.view
     }
     
+    // MARK: Actions
     @IBAction func onCancelButtonTapped(sender: AnyObject) {
         presentingViewController?.dismissViewControllerAnimated( true, completion: nil )
     }
     
-    // dismiss input views
     @IBAction func onElseWhereTapped(sender: AnyObject) {
+        // dismisses any input view
         view.endEditing( true )
+    }
+    
+    @IBAction func onPayButtonTapped(sender: AnyObject) {
+        var payment = Payment()
+        payment.payor = payorTextbox.text
+        payment.group = group
+        payment.restaurant = restaurantTextbox.text
+        payment.date = DayFormatter.dateFromString( dateTextBox.text )
+        
+        payment.saveInBackgroundWithBlock { (success: Bool, error: NSError!) -> Void in
+            self.presentingViewController?.dismissViewControllerAnimated( true, completion: nil )
+            
+            return
+        }
     }
 }

@@ -20,7 +20,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="onCancelButtonTapped:" destination="-1" eventType="touchUpInside" id="c7k-ht-9qc"/>
+                        <action selector="onCancelButtonTapped:" destination="-1" eventType="touchUpInside" id="Qq2-CS-qVv"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p4q-AE-8sy">
@@ -29,7 +29,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="onOkayButtonTapped:" destination="-1" eventType="touchUpInside" id="CMA-tV-HO7"/>
+                        <action selector="onOkayButtonTapped:" destination="-1" eventType="touchUpInside" id="f0R-hT-9EP"/>
                     </connections>
                 </button>
             </subviews>

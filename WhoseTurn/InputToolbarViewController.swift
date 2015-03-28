@@ -9,19 +9,19 @@
 import UIKit
 
 class InputToolBarViewController: UIViewController {
+    
+    let xib = "InputToolBarViewController"
+
     typealias Handler = ()->()
     var okayHandler: Handler?
     var cancelHandler: Handler?
     
-    let xib = "InputToolBarViewController"
-
-    override init() {
-        super.init( nibName: xib, bundle: nil )
-    }
-
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+//    required init(coder aDecoder: NSCoder) {
+//        super.init(coder: aDecoder)
+//
+//        let view = NSBundle.mainBundle().loadNibNamed( xib, owner: self, options: nil).first as UIView
+//        view.addSubview( view )
+//    }
     
     @IBAction func onCancelButtonTapped(sender: AnyObject) {
         if let handler = cancelHandler {

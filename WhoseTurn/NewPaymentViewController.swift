@@ -18,6 +18,7 @@ class NewPaymentViewController : UITableViewController {
     @IBOutlet weak var restaurantTextbox: UITextField!
     
     var payorPickerToolbar: InputToolBarViewController!
+    var datePicker: DatePicker!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,38 +29,23 @@ class NewPaymentViewController : UITableViewController {
     
     private func configurePayorField() {
         payorTextbox.text = PFUser.currentUser().username
-        
-        // http://stackoverflow.com/a/22349340
-        // use picker view to fill in text fields
-        
-        payorTextbox.inputView = PayorPickerViewController( payors: members )
-        
-        payorPickerToolbar = InputToolBarViewController()
-        payorPickerToolbar.okayHandler = {
-            //TODO
-            
-            self.view.endEditing( true )
-            return
-        }
-        payorPickerToolbar.cancelHandler = {
-            // dismiss picker input view
-            self.view.endEditing( true )
-            return
-        }
-        
-        payorTextbox.inputAccessoryView = payorPickerToolbar.view
+        payorTextbox.inputView = PayorPickerViewController( payors: members, textField: payorTextbox )
     }
     
     private func configureDateField() {
         let now = NSDate()
-        let formatter = NSDateFormatter()
-        formatter.setLocalizedDateFormatFromTemplate( "yyyy-MM-dd zzz" )
-        dateTextBox.text = formatter.stringFromDate( now )
+        dateTextBox.text = DayFormatter.stringFromDate( now )
 
-        
+        datePicker = DatePicker( textField: dateTextBox )
+        dateTextBox.inputView = datePicker.view
     }
     
     @IBAction func onCancelButtonTapped(sender: AnyObject) {
         presentingViewController?.dismissViewControllerAnimated( true, completion: nil )
+    }
+    
+    // dismiss input views
+    @IBAction func onElseWhereTapped(sender: AnyObject) {
+        view.endEditing( true )
     }
 }

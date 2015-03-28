@@ -228,6 +228,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <gestureRecognizers/>
                         <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="Ua7-eM-cv4">
                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -281,8 +282,11 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="today" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mQM-bM-sd1">
-                                                    <rect key="frame" x="541" y="13" width="41" height="17"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="today" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mQM-bM-sd1">
+                                                    <rect key="frame" x="382" y="13" width="200" height="17"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="200" id="ERd-8P-v5W"/>
+                                                    </constraints>
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -351,6 +355,7 @@
                         <connections>
                             <outlet property="dataSource" destination="Fcc-eb-zJ0" id="kmc-cp-HYZ"/>
                             <outlet property="delegate" destination="Fcc-eb-zJ0" id="bYJ-ht-4FN"/>
+                            <outletCollection property="gestureRecognizers" destination="huY-uu-5Ho" appends="YES" id="xgd-q3-vWf"/>
                         </connections>
                     </tableView>
                     <connections>
@@ -360,6 +365,11 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4b2-RR-b7A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="huY-uu-5Ho">
+                    <connections>
+                        <action selector="onElseWhereTapped:" destination="Fcc-eb-zJ0" id="Euz-RJ-2aZ"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2078" y="886"/>
         </scene>

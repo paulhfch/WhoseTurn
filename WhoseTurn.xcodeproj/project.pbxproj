@@ -24,6 +24,7 @@
 		16A1B35A1AC5C10300C36D95 /* InputToolBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16A1B3581AC5C10300C36D95 /* InputToolBarViewController.xib */; };
 		16A1B35C1AC61FCE00C36D95 /* DayFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A1B35B1AC61FCE00C36D95 /* DayFormatter.swift */; };
 		16A1B3601AC6217E00C36D95 /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A1B35F1AC6217E00C36D95 /* DatePicker.swift */; };
+		16A1B3621AC7086000C36D95 /* PaymentHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A1B3611AC7086000C36D95 /* PaymentHistoryViewController.swift */; };
 		16D644E91AC4D8C200BE0E0F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D644E81AC4D8C200BE0E0F /* ProfileViewController.swift */; };
 		E79FCF117FB6D94358448040 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A41D6344AB15F1FF7D817C77 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -63,6 +64,7 @@
 		16A1B3581AC5C10300C36D95 /* InputToolBarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputToolBarViewController.xib; sourceTree = "<group>"; };
 		16A1B35B1AC61FCE00C36D95 /* DayFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayFormatter.swift; sourceTree = "<group>"; };
 		16A1B35F1AC6217E00C36D95 /* DatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
+		16A1B3611AC7086000C36D95 /* PaymentHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentHistoryViewController.swift; sourceTree = "<group>"; };
 		16D644E81AC4D8C200BE0E0F /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		A41D6344AB15F1FF7D817C77 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -173,6 +175,7 @@
 				162B72931AC4CDAC00A70899 /* MembersViewController.swift */,
 				16D644E81AC4D8C200BE0E0F /* ProfileViewController.swift */,
 				16A1B34B1AC58BB300C36D95 /* NewPaymentViewController.swift */,
+				16A1B3611AC7086000C36D95 /* PaymentHistoryViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 			files = (
 				16A1B34C1AC58BB300C36D95 /* NewPaymentViewController.swift in Sources */,
 				162B72901AC4AD6A00A70899 /* User.swift in Sources */,
+				16A1B3621AC7086000C36D95 /* PaymentHistoryViewController.swift in Sources */,
 				166E03CA1AC237A200169F33 /* LoginViewController.swift in Sources */,
 				16A1B35C1AC61FCE00C36D95 /* DayFormatter.swift in Sources */,
 				166E03C81AC237A200169F33 /* AppDelegate.swift in Sources */,

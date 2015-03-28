@@ -8,39 +8,68 @@
 
 import UIKit
 
+let showPaymentHistorySegueId = "showPaymentHistory"
+
 class ProfileViewController : UITableViewController {
     var member: String!
     var group: String!
-    var payments: [Payment]!
+    var payments: [String:[Payment]]!
     
     @IBOutlet weak var lastPaymentLabel: UILabel!
     @IBOutlet weak var numberOfPaymentsLabel: UILabel!
     @IBOutlet weak var owingLabel: UILabel!
     
+    // MARK: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureNavBar()
-        fetchPaymentRecords()
+        updateView()
     }
     
     private func configureNavBar() {
         self.title = member
     }
     
-    private func fetchPaymentRecords() {
-        Payment.getPaymentsFor( member, group: group) { ( payments:[Payment]) -> Void in
-            self.payments = payments
+    private func updateView(){
+        if let paymentOfMember = payments[member] {
+            if let lastPayment = Payment.getLatestPaymentFrom( paymentOfMember ) {
+                lastPaymentLabel.text = "\(DayFormatter.stringFromDate( lastPayment.date ))"
+            }
             
-            self.updateView()
+            numberOfPaymentsLabel.text = "\(paymentOfMember.count)"
+            
+            let owing = getMostTimesPaid() - getTimesPaidByMember( member )
+            owingLabel.text = "\(owing)"
         }
     }
     
-    private func updateView(){
-        if let lastPayment = Payment.getLatestPaymentFrom( payments ) {
-            lastPaymentLabel.text = "\(DayFormatter.stringFromDate( lastPayment.date ))"
+    private func getMostTimesPaid() -> Int {
+        var mostTimesPaid = 0
+        
+        for ( member, paymentsOfMember ) in payments {
+            if paymentsOfMember.count > mostTimesPaid {
+                mostTimesPaid = paymentsOfMember.count
+            }
         }
         
-        numberOfPaymentsLabel.text = "\(payments.count)"
+        return mostTimesPaid
+    }
+    
+    private func getTimesPaidByMember( member: String ) -> Int {
+        if let paymentsOfMember = payments[member] {
+            return paymentsOfMember.count
+        }
+        else {
+            return 0
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == showPaymentHistorySegueId {
+            var destViewController = segue.destinationViewController as PaymentHistoryViewController
+            
+            destViewController.payments = payments[member]
+        }
     }
 }

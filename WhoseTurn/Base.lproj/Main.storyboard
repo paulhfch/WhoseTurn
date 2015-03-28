@@ -180,7 +180,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Group" id="E5F-Ep-N4W">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="LKS-bA-TgB">
+                        <barButtonItem key="rightBarButtonItem" id="LKS-bA-TgB">
                             <view key="customView" contentMode="scaleToFill" id="VTE-Kr-X5X">
                                 <rect key="frame" x="449" y="5" width="66" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -458,6 +458,9 @@
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <segue destination="IIU-UY-ARk" kind="show" identifier="showPaymentHistory" id="c9e-sf-lOX"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -481,7 +484,6 @@
                         <outlet property="lastPaymentLabel" destination="T6n-sa-e8Y" id="CH2-bA-FEZ"/>
                         <outlet property="numberOfPaymentsLabel" destination="WDA-cV-sdK" id="qKg-sq-xcf"/>
                         <outlet property="owingLabel" destination="kqL-IR-NWS" id="Ucu-eG-3Mf"/>
-                        <segue destination="IIU-UY-ARk" kind="show" identifier="showPaymentHistory" id="fnu-j6-JlB"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1lj-uO-gVe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -491,17 +493,35 @@
         <!--Payment History-->
         <scene sceneID="XTL-0U-kl2">
             <objects>
-                <tableViewController id="IIU-UY-ARk" sceneMemberID="viewController">
+                <tableViewController id="IIU-UY-ARk" customClass="PaymentHistoryViewController" customModule="WhoseTurn" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="aGK-sS-fdH">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="UrT-an-XS6">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="paymentHistoryCell" textLabel="YYc-NX-XNc" detailTextLabel="93y-3N-aqa" style="IBUITableViewCellStyleValue1" id="UrT-an-XS6" customClass="PaymentHistoryCell" customModule="WhoseTurn" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UrT-an-XS6" id="rbj-PV-g3r">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Restaurant" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YYc-NX-XNc">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="93y-3N-aqa">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="dateLabel" destination="93y-3N-aqa" id="qNQ-CU-MNm"/>
+                                    <outlet property="restaurantLabel" destination="YYc-NX-XNc" id="HaM-3S-1yP"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

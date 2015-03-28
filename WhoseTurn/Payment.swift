@@ -13,6 +13,7 @@ class Payment : PFObject, PFSubclassing {
     struct ColumnKey {
         static let payor = "payor"
         static let group = "group"
+        static let paidFor = "paidFor"
     }
     
     // http://stackoverflow.com/a/24646298
@@ -21,6 +22,7 @@ class Payment : PFObject, PFSubclassing {
     @NSManaged var group: String!
     @NSManaged var restaurant: String!
     @NSManaged var date: NSDate!
+    @NSManaged var paidFor: [String]!
     
     class func parseClassName() -> String! {
         return "Payment"

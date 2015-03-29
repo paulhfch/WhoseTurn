@@ -28,15 +28,15 @@ class Payment : PFObject, PFSubclassing {
         return "Payment"
     }
     
-    class func getPaymentsFor( username: String, group: String, callback: ([Payment]) -> Void ) {
+    // MARK: Utils
+    class func getPaymentsForEveryoneIn( group: String, callback: ([Payment]) -> Void ) {
         let query = Payment.query()
-        
-        query.whereKey( Payment.ColumnKey.payor, equalTo: username )
         query.whereKey( Payment.ColumnKey.group, equalTo: group )
         
         query.findObjectsInBackgroundWithBlock { ( payments: [AnyObject]!, error: NSError!) -> Void in
+
             if error == nil {
-                callback( payments as [Payment]! )
+                callback( payments as [Payment] )
             }
             else {
                 callback( [Payment]() )
@@ -44,45 +44,36 @@ class Payment : PFObject, PFSubclassing {
         }
     }
     
-    /**
-        Retrieves all payments in a group in the format of [ member: [payments] ]
-    */
-    class func getPaymentsForEveryoneIn( group: String, callback: ([String:[Payment]]) -> Void ) {
-        let query = Payment.query()
-        query.whereKey( Payment.ColumnKey.group, equalTo: group )
-        
-        query.findObjectsInBackgroundWithBlock { ( payments: [AnyObject]!, error: NSError!) -> Void in
-            var paymentsMap = [String:[Payment]]()
-            
-            if error == nil {
-                for payment in payments as [Payment] {
-                    let memberName = payment.payor
-                    
-                    if paymentsMap[memberName] == nil {
-                        paymentsMap[memberName] = [ payment ]
-                    }
-                    else {
-                        paymentsMap[memberName]!.append( payment )
-                    }
-                }
-                
-                callback( paymentsMap )
-            }
-            else {
-                callback( paymentsMap )
-            }
-        }
+    class func getPaymentsOfMember( member: String, payments: [Payment] ) -> [Payment] {
+        return payments.filter { $0.payor == member }
     }
     
-    class func getLatestPaymentFrom( payments: [Payment] ) -> Payment? {
-        var entries = payments
+    class func getLatestPaymentFor( member: String, payments: [Payment] ) -> Payment? {
+        var entries = payments.filter { $0.payor == member }
         
         entries.sort { $0.date.compare( $1.date ) == NSComparisonResult.OrderedDescending }
         
         return entries.first
     }
-
-    class func getNumberOfMembersPaidFor( payments: [Payment] ) -> Int {
-        return payments.reduce( 0 ) { $0 + $1.paidFor.count }
+    
+    class func getCreditsFor( member: String, payments: [Payment] ) -> Int {
+        var credits = 0
+        
+        for payment in payments {
+            if payment.payor == member {
+                credits += payment.paidFor.count
+            }
+            else {
+                credits += payment.paidFor.reduce( 0 ) {
+                    if $1 == member {
+                        return $0 - 1
+                    }
+                    
+                    return $0
+                }
+            }
+        }
+        
+        return credits
     }
 }

@@ -16,7 +16,7 @@ class MembersViewController : UITableViewController {
     let cellIdentifier = "memberCell"
     
     var group: String!
-    var payments: [String:[Payment]]?
+    var payments: [Payment]?
     var members = [User]()
     var nextMemberToPay: String!
     
@@ -35,7 +35,7 @@ class MembersViewController : UITableViewController {
         Group( name: group ).getMembers { (members) -> Void in
             self.members = members
             
-            Payment.getPaymentsForEveryoneIn( self.group, callback: { ( payments: [String : [Payment]]) -> Void in
+            Payment.getPaymentsForEveryoneIn( self.group, callback: { ( payments: [Payment]) -> Void in
                 self.payments = payments
                 self.nextMemberToPay = self.getNextToPay( members, payments )
                 
@@ -89,43 +89,47 @@ class MembersViewController : UITableViewController {
     /**
         The member who owes the most and hasn't paid lately is the next to pay
     */
-    private func getNextToPay( members: [User], _ payments: [String:[Payment]] ) -> String {
-        // criteria is an array of ( member, numberOfPayments, latestPaymentDate )
-        var criteria = [(String, Int, NSDate )]()
+    private func getNextToPay( members: [User], _ payments: [Payment] ) -> String {
+        // ( member, numberOfPayments, latestPaymentDate )
+        typealias Criterion = (String, Int, NSDate )
+        
+        var criteria = [Criterion]()
         
         for member in members {
             let memberName = member.username
+            var criterion: Criterion
             
-            //MARK: unwrap multiple optionals - swift 1.2?
-            if let paymentsOfMember = payments[memberName] {
-                if let latestPayment = Payment.getLatestPaymentFrom( paymentsOfMember ){
-                     criteria.append( ( memberName,
-                        Payment.getNumberOfMembersPaidFor( paymentsOfMember ),
-                        latestPayment.date ) )
-                }
-                else {
-                    criteria.append( ( memberName,
-                        Payment.getNumberOfMembersPaidFor( paymentsOfMember ),
-                        NSDate( timeIntervalSince1970: 0 ) ) )
-                }
+            if let latestPayment = Payment.getLatestPaymentFor( memberName, payments: payments ){
+                
+                criterion = (
+                    memberName,
+                    Payment.getCreditsFor( memberName, payments: payments ),
+                    latestPayment.date
+                )
             }
-            else {
-                criteria.append( ( memberName, 0, NSDate( timeIntervalSince1970: 0 ) ) )
+            else { // If no payment record is found, crafts a criterion which makes this member pay next
+                criterion = (
+                    memberName,
+                    Int.min,
+                    NSDate( timeIntervalSince1970: 0 )
+                )
             }
+            
+            criteria.append( criterion )
         }
         
         criteria.sort {
-            let ( _, thisNumberOfPayments, thisLatestPaymentDate ) = $0
-            let ( _, thatNumberOfPayments, thatLatestPaymentDate ) = $1
+            let ( _, thisCredits, thisLatestPaymentDate ) = $0
+            let ( _, thatCredits, thatLatestPaymentDate ) = $1
             
-            if thisNumberOfPayments == thatNumberOfPayments {
+            if thisCredits == thatCredits {
                 return thisLatestPaymentDate.compare( thatLatestPaymentDate ) == NSComparisonResult.OrderedAscending
             }
             
-            return thisNumberOfPayments < thatNumberOfPayments
+            return thisCredits < thatCredits
         }
         
-        return criteria.first!.0 // return username of the member
+        return criteria.first!.0 // return username of the first member
     }
     
     // MARK: UITableViewDelegate

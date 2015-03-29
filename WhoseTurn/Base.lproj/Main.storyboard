@@ -245,7 +245,7 @@
         <scene sceneID="mFN-bv-gxj">
             <objects>
                 <tableViewController id="Fcc-eb-zJ0" customClass="NewPaymentViewController" customModule="WhoseTurn" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Yvc-q4-UIv">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Yvc-q4-UIv">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -253,7 +253,7 @@
                         <sections>
                             <tableViewSection headerTitle="Payment Info" id="BhS-Bx-FaQ">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Xd4-hq-8Jb">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="Xd4-hq-8Jb">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xd4-hq-8Jb" id="aSh-Dt-qX3">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -286,7 +286,7 @@
                                             <outletCollection property="gestureRecognizers" destination="Tqv-PM-vNp" appends="YES" id="nvx-Xd-OHp"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Ibj-Jd-lhH">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="Ibj-Jd-lhH">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ibj-Jd-lhH" id="S8V-9O-yfW">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -319,7 +319,7 @@
                                             <outletCollection property="gestureRecognizers" destination="Im1-HN-INd" appends="YES" id="YY5-9G-KGI"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="KZX-iK-h9S">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="80" id="KZX-iK-h9S">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KZX-iK-h9S" id="cZu-7k-GNw">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -372,7 +372,7 @@
                             </tableViewSection>
                             <tableViewSection id="R6T-7l-0Bo">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="e7C-Aa-aTC">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="e7C-Aa-aTC">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e7C-Aa-aTC" id="HIc-97-1re">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -448,7 +448,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="memberMultileSelectionCell" textLabel="gYm-Xx-r4F" style="IBUITableViewCellStyleDefault" id="Y8c-6Z-Pao" customClass="MemberMultileSelectionCell" customModule="WhoseTurn" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="memberMultileSelectionCell" textLabel="gYm-Xx-r4F" style="IBUITableViewCellStyleDefault" id="Y8c-6Z-Pao" customClass="MemberMultileSelectionCell" customModule="WhoseTurn" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="584" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Y8c-6Z-Pao" id="Wu4-lI-3Jw">

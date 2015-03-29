@@ -74,6 +74,8 @@ class NewPaymentViewController : UITableViewController {
         payment.date = DayFormatter.dateFromString( dateTextBox.text )
         payment.paidFor = membersPicker.getSelectedMembers()
         
+        // MARK: TODO some validation here please
+        
         payment.saveInBackgroundWithBlock { (success: Bool, error: NSError!) -> Void in
             self.presentingViewController?.dismissViewControllerAnimated( true, completion: nil )
             

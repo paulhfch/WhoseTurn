@@ -13,7 +13,7 @@ let showPaymentHistorySegueId = "showPaymentHistory"
 class ProfileViewController : UITableViewController {
     var member: String!
     var group: String!
-    var payments: [String:[Payment]]!
+    var payments: [Payment]!
     
     @IBOutlet weak var lastPaymentLabel: UILabel!
     @IBOutlet weak var numberOfPaymentsLabel: UILabel!
@@ -32,46 +32,23 @@ class ProfileViewController : UITableViewController {
     }
     
     private func updateView(){
-        if let paymentOfMember = payments[member] {
-            if let lastPayment = Payment.getLatestPaymentFrom( paymentOfMember ) {
-                lastPaymentLabel.text = "\(DayFormatter.stringFromDate( lastPayment.date ))"
-            }
-            
-            numberOfPaymentsLabel.text = "\(paymentOfMember.count)"
+        if let lastPayment = Payment.getLatestPaymentFor( member, payments: payments ) {
+            lastPaymentLabel.text = "\(DayFormatter.stringFromDate( lastPayment.date ))"
         }
         
-        let owing = getMostCredits() - getCreditsOfMember( member )
+        let paymentOfMember = Payment.getPaymentsOfMember( self.member, payments: self.payments )
+        numberOfPaymentsLabel.text = "\(paymentOfMember.count)"
+        
+        
+        let owing = abs( min( 0, Payment.getCreditsFor( self.member, payments: self.payments ) ) )
         owingLabel.text = "\(owing)"
-    }
-    
-    private func getMostCredits() -> Int {
-        var credits = 0
-        
-        for ( member, paymentsOfMember ) in payments {
-            let creditsOfMember = Payment.getNumberOfMembersPaidFor( paymentsOfMember )
-            
-            if creditsOfMember > credits {
-                credits = creditsOfMember
-            }
-        }
-        
-        return credits
-    }
-    
-    private func getCreditsOfMember( member: String ) -> Int {
-        if let paymentsOfMember = payments[member] {
-            return Payment.getNumberOfMembersPaidFor( paymentsOfMember )
-        }
-        else {
-            return 0
-        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == showPaymentHistorySegueId {
             var destViewController = segue.destinationViewController as PaymentHistoryViewController
             
-            destViewController.payments = payments[member]
+            destViewController.payments = Payment.getPaymentsOfMember( self.member, payments: self.payments )
         }
     }
 }

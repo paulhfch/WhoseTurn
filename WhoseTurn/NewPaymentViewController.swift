@@ -10,6 +10,8 @@ import UIKit
 
 class NewPaymentViewController : UITableViewController {
     
+    let showMembersSegueId = "showMembers"
+    
     var group: String!
     var members: [User]!
     
@@ -19,6 +21,7 @@ class NewPaymentViewController : UITableViewController {
     
     var payorPickerToolbar: InputToolBarViewController!
     var datePicker: DatePicker!
+    weak var membersPicker: MemberMultipleSelectionViewController!
     
     // MARK: UIViewController
     override func viewDidLoad() {
@@ -30,7 +33,7 @@ class NewPaymentViewController : UITableViewController {
     
     private func configurePayorField() {
         payorTextbox.text = PFUser.currentUser().username
-        payorTextbox.inputView = PayorPickerViewController( payors: members, textField: payorTextbox )
+        payorTextbox.inputView = PayorPickerViewController( payors: members, textField: payorTextbox, parentViewController: self )
     }
     
     private func configureDateField() {
@@ -41,7 +44,19 @@ class NewPaymentViewController : UITableViewController {
         dateTextBox.inputView = datePicker.view
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == showMembersSegueId {
+            membersPicker = segue.destinationViewController as MemberMultipleSelectionViewController
+            membersPicker.members = members
+            membersPicker.payor = PFUser.currentUser().username
+        }
+    }
+    
     // MARK: Actions
+    @IBAction func onPayorChanged(sender: AnyObject) {
+        membersPicker.update( payorTextbox.text, members )
+    }
+    
     @IBAction func onCancelButtonTapped(sender: AnyObject) {
         presentingViewController?.dismissViewControllerAnimated( true, completion: nil )
     }
@@ -57,6 +72,7 @@ class NewPaymentViewController : UITableViewController {
         payment.group = group
         payment.restaurant = restaurantTextbox.text
         payment.date = DayFormatter.dateFromString( dateTextBox.text )
+        payment.paidFor = membersPicker.getSelectedMembers()
         
         payment.saveInBackgroundWithBlock { (success: Bool, error: NSError!) -> Void in
             self.presentingViewController?.dismissViewControllerAnimated( true, completion: nil )

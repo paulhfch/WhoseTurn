@@ -25,6 +25,7 @@
 		16A1B35C1AC61FCE00C36D95 /* DayFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A1B35B1AC61FCE00C36D95 /* DayFormatter.swift */; };
 		16A1B3601AC6217E00C36D95 /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A1B35F1AC6217E00C36D95 /* DatePicker.swift */; };
 		16A1B3621AC7086000C36D95 /* PaymentHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A1B3611AC7086000C36D95 /* PaymentHistoryViewController.swift */; };
+		16A1B3641AC7193400C36D95 /* MemberMultipleSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A1B3631AC7193400C36D95 /* MemberMultipleSelectionViewController.swift */; };
 		16D644E91AC4D8C200BE0E0F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D644E81AC4D8C200BE0E0F /* ProfileViewController.swift */; };
 		E79FCF117FB6D94358448040 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A41D6344AB15F1FF7D817C77 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -65,6 +66,7 @@
 		16A1B35B1AC61FCE00C36D95 /* DayFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayFormatter.swift; sourceTree = "<group>"; };
 		16A1B35F1AC6217E00C36D95 /* DatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
 		16A1B3611AC7086000C36D95 /* PaymentHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentHistoryViewController.swift; sourceTree = "<group>"; };
+		16A1B3631AC7193400C36D95 /* MemberMultipleSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberMultipleSelectionViewController.swift; sourceTree = "<group>"; };
 		16D644E81AC4D8C200BE0E0F /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		A41D6344AB15F1FF7D817C77 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -176,6 +178,7 @@
 				16D644E81AC4D8C200BE0E0F /* ProfileViewController.swift */,
 				16A1B34B1AC58BB300C36D95 /* NewPaymentViewController.swift */,
 				16A1B3611AC7086000C36D95 /* PaymentHistoryViewController.swift */,
+				16A1B3631AC7193400C36D95 /* MemberMultipleSelectionViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				TargetAttributes = {
 					166E03C11AC237A100169F33 = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = 3KN3Y9MWEG;
 					};
 					166E03D61AC237A200169F33 = {
 						CreatedOnToolsVersion = 6.2;
@@ -360,6 +364,7 @@
 				16A1B35C1AC61FCE00C36D95 /* DayFormatter.swift in Sources */,
 				166E03C81AC237A200169F33 /* AppDelegate.swift in Sources */,
 				16A1B3511AC5B0C400C36D95 /* PayorPickerViewController.swift in Sources */,
+				16A1B3641AC7193400C36D95 /* MemberMultipleSelectionViewController.swift in Sources */,
 				16A1B3591AC5C10300C36D95 /* InputToolBarViewController.swift in Sources */,
 				16A1B3601AC6217E00C36D95 /* DatePicker.swift in Sources */,
 				162B72921AC4AF6900A70899 /* Group.swift in Sources */,
@@ -490,9 +495,12 @@
 			baseConfigurationReference = 0473FCBA44B894B231F42754 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = WhoseTurn/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "WhoseTurn/WhoseTurn-Bridging-Header.h";
 			};
 			name = Debug;
@@ -502,9 +510,12 @@
 			baseConfigurationReference = 0A7B807C30C0F3E8AC5AAD37 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = WhoseTurn/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "WhoseTurn/WhoseTurn-Bridging-Header.h";
 			};
 			name = Release;

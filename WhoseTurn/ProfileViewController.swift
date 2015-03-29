@@ -39,26 +39,28 @@ class ProfileViewController : UITableViewController {
             
             numberOfPaymentsLabel.text = "\(paymentOfMember.count)"
             
-            let owing = getMostTimesPaid() - getTimesPaidByMember( member )
+            let owing = getMostCredits() - getCreditsOfMember( member )
             owingLabel.text = "\(owing)"
         }
     }
     
-    private func getMostTimesPaid() -> Int {
-        var mostTimesPaid = 0
+    private func getMostCredits() -> Int {
+        var credits = 0
         
         for ( member, paymentsOfMember ) in payments {
-            if paymentsOfMember.count > mostTimesPaid {
-                mostTimesPaid = paymentsOfMember.count
+            let creditsOfMember = Payment.getNumberOfMembersPaidFor( paymentsOfMember )
+            
+            if creditsOfMember > credits {
+                credits = creditsOfMember
             }
         }
         
-        return mostTimesPaid
+        return credits
     }
     
-    private func getTimesPaidByMember( member: String ) -> Int {
+    private func getCreditsOfMember( member: String ) -> Int {
         if let paymentsOfMember = payments[member] {
-            return paymentsOfMember.count
+            return Payment.getNumberOfMembersPaidFor( paymentsOfMember )
         }
         else {
             return 0

@@ -8,11 +8,13 @@
 
 import UIKit
 
-let memberCellIdentifier = "memberCell"
 let showProfileSegueId = "showProfile"
 let showNewPaymentSegueId = "showNewPayment"
 
 class MembersViewController : UITableViewController {
+    
+    let cellIdentifier = "memberCell"
+    
     var group: String!
     var payments: [String:[Payment]]?
     var members = [User]()
@@ -74,7 +76,7 @@ class MembersViewController : UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let index = indexPath.row
-        var cell = tableView.dequeueReusableCellWithIdentifier( memberCellIdentifier ) as MemberCell
+        var cell = tableView.dequeueReusableCellWithIdentifier( cellIdentifier ) as MemberCell
         
         let memberName = members[index].username
         
@@ -97,10 +99,14 @@ class MembersViewController : UITableViewController {
             //MARK: unwrap multiple optionals - swift 1.2?
             if let paymentsOfMember = payments[memberName] {
                 if let latestPayment = Payment.getLatestPaymentFrom( paymentsOfMember ){
-                     criteria.append( ( memberName, paymentsOfMember.count, latestPayment.date ) )
+                     criteria.append( ( memberName,
+                        Payment.getNumberOfMembersPaidFor( paymentsOfMember ),
+                        latestPayment.date ) )
                 }
                 else {
-                    criteria.append( ( memberName, paymentsOfMember.count, NSDate( timeIntervalSince1970: 0 ) ) )
+                    criteria.append( ( memberName,
+                        Payment.getNumberOfMembersPaidFor( paymentsOfMember ),
+                        NSDate( timeIntervalSince1970: 0 ) ) )
                 }
             }
             else {

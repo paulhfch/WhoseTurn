@@ -14,6 +14,13 @@ class PaymentHistoryViewController: UITableViewController {
     
     var payments : [Payment]!
     
+    // MARK: UIViewController
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        payments.sort { $0.date.compare( $1.date ) == NSComparisonResult.OrderedDescending }
+    }
+    
     // MARK: UITableView DataSource
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1

@@ -81,4 +81,8 @@ class Payment : PFObject, PFSubclassing {
         
         return entries.first
     }
+
+    class func getNumberOfMembersPaidFor( payments: [Payment] ) -> Int {
+        return payments.reduce( 0 ) { $0 + $1.paidFor.count }
+    }
 }

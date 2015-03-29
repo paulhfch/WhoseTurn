@@ -14,15 +14,25 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var usernameTextbox: UITextField!
     @IBOutlet weak var passwordTextBox: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
     
+    // MARK: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         
         usernameTextbox.delegate = self
         passwordTextBox.delegate = self
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear( animated )
+        
+        self.enableControls( true )
+    }
 
     @IBAction func onLoginButtonTapped(sender: AnyObject) {
+        enableControls( false )
+        
         PFUser.logInWithUsernameInBackground(
             usernameTextbox.text,
             password: passwordTextBox.text) { ( user: PFUser!, error: NSError!) -> Void in
@@ -34,8 +44,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         message: "Incorrect Username/Password combination (Are you connected to the Internet?)",
                         delegate: nil,
                         cancelButtonTitle: "Try again" ).show()
+                    
+                    self.enableControls( true )
                 }
         }
+    }
+    
+    private func enableControls( enabled : Bool ) {
+        usernameTextbox.userInteractionEnabled = enabled
+        passwordTextBox.userInteractionEnabled = enabled
+        loginButton.userInteractionEnabled = enabled
     }
     
     func textFieldShouldReturn(textField: UITextField!) -> Bool {

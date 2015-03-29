@@ -12,13 +12,15 @@ class PaymentHistoryViewController: UITableViewController {
     
     let cellIdentifier = "paymentHistoryCell"
     
-    var payments : [Payment]!
+    var payments : [Payment]?
     
     // MARK: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        payments.sort { $0.date.compare( $1.date ) == NSComparisonResult.OrderedDescending }
+        if payments != nil {
+            payments!.sort { $0.date.compare( $1.date ) == NSComparisonResult.OrderedDescending }
+        }
     }
     
     // MARK: UITableView DataSource
@@ -27,17 +29,24 @@ class PaymentHistoryViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return payments.count
+        if let paymentRecords = payments {
+            return paymentRecords.count
+        }
+        else {
+            return 0
+        }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let payment = payments[indexPath.row]
+        
         
         var cell = tableView.dequeueReusableCellWithIdentifier( cellIdentifier ) as PaymentHistoryCell
         
-        cell.restaurantLabel.text = payment.restaurant
-        cell.dateLabel.text = DayFormatter.stringFromDate( payment.date )
-        
+        if let paymentRecords = payments {
+            let payment = paymentRecords[indexPath.row]
+            cell.restaurantLabel.text = payment.restaurant
+            cell.dateLabel.text = DayFormatter.stringFromDate( payment.date )
+        }
         return cell
     }
 }

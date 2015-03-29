@@ -108,6 +108,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="loginButton" destination="jx5-L7-1xk" id="JIE-GA-urT"/>
                         <outlet property="passwordTextBox" destination="BHq-fE-eIb" id="bkc-ql-i61"/>
                         <outlet property="usernameTextbox" destination="b9U-Mc-Gr2" id="53x-FP-Qih"/>
                         <segue destination="tyr-2i-7qq" kind="presentation" identifier="showGroups" id="5mR-dq-7WK"/>
@@ -249,19 +250,6 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <gestureRecognizers/>
-                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="Ua7-eM-cv4">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <items>
-                                <navigationItem id="Jhz-0U-5eT">
-                                    <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="gr4-6B-XMQ">
-                                        <connections>
-                                            <action selector="onCancelButtonTapped:" destination="Fcc-eb-zJ0" id="iLj-Qj-hro"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </navigationItem>
-                            </items>
-                        </navigationBar>
                         <sections>
                             <tableViewSection headerTitle="Payment Info" id="BhS-Bx-FaQ">
                                 <cells>
@@ -360,13 +348,13 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Paid For" id="UUC-qc-uD1">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" rowHeight="200" id="hlV-Lx-VMV">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" rowHeight="150" id="hlV-Lx-VMV">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hlV-Lx-VMV" id="QNN-KK-P4U">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NoJ-tc-1UY">
-                                                    <rect key="frame" x="8" y="8" width="584" height="183"/>
+                                                    <rect key="frame" x="8" y="8" width="584" height="133"/>
                                                     <connections>
                                                         <segue destination="i5X-qd-3i6" kind="embed" identifier="showMembers" id="230-Zc-Vch"/>
                                                     </connections>
@@ -390,7 +378,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MjV-zJ-eM8">
-                                                    <rect key="frame" x="8" y="8" width="584" height="27"/>
+                                                    <rect key="frame" x="28" y="8" width="100" height="27"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="aeL-4J-Tsd"/>
+                                                    </constraints>
                                                     <state key="normal" title="Log">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -398,12 +389,25 @@
                                                         <action selector="onPayButtonTapped:" destination="Fcc-eb-zJ0" eventType="touchUpInside" id="sEl-d0-3Bl"/>
                                                     </connections>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LD7-gH-3vY">
+                                                    <rect key="frame" x="472" y="8" width="100" height="27"/>
+                                                    <state key="normal" title="Cancel">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="onCancelButtonTapped:" destination="Fcc-eb-zJ0" eventType="touchUpInside" id="Tyb-fc-Qdj"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="MjV-zJ-eM8" firstAttribute="leading" secondItem="HIc-97-1re" secondAttribute="leadingMargin" id="3b6-xL-Qte"/>
+                                                <constraint firstItem="MjV-zJ-eM8" firstAttribute="leading" secondItem="HIc-97-1re" secondAttribute="leadingMargin" constant="20" id="3b6-xL-Qte"/>
+                                                <constraint firstItem="LD7-gH-3vY" firstAttribute="top" secondItem="HIc-97-1re" secondAttribute="topMargin" id="FdL-bm-hF0"/>
                                                 <constraint firstItem="MjV-zJ-eM8" firstAttribute="top" secondItem="HIc-97-1re" secondAttribute="topMargin" id="HbT-aS-gfh"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="MjV-zJ-eM8" secondAttribute="trailing" id="I0f-xK-DfP"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="MjV-zJ-eM8" secondAttribute="bottom" id="VCF-TV-Z9u"/>
+                                                <constraint firstItem="MjV-zJ-eM8" firstAttribute="width" secondItem="LD7-gH-3vY" secondAttribute="width" id="aL0-dS-kI9"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="LD7-gH-3vY" secondAttribute="trailing" constant="20" id="e8i-Oi-TNS"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="LD7-gH-3vY" secondAttribute="bottom" id="gV1-hv-UkK"/>
+                                                <constraint firstItem="MjV-zJ-eM8" firstAttribute="centerY" secondItem="LD7-gH-3vY" secondAttribute="centerY" id="rcE-Ag-CnK"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -433,14 +437,14 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2078" y="886"/>
+            <point key="canvasLocation" x="2078" y="885"/>
         </scene>
         <!--Member Multiple Selection View Controller-->
         <scene sceneID="mlI-L8-CAs">
             <objects>
                 <tableViewController id="i5X-qd-3i6" customClass="MemberMultipleSelectionViewController" customModule="WhoseTurn" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ols-HC-rZv">
-                        <rect key="frame" x="0.0" y="0.0" width="584" height="183"/>
+                        <rect key="frame" x="0.0" y="0.0" width="584" height="133"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>

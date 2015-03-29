@@ -38,10 +38,10 @@ class ProfileViewController : UITableViewController {
             }
             
             numberOfPaymentsLabel.text = "\(paymentOfMember.count)"
-            
-            let owing = getMostCredits() - getCreditsOfMember( member )
-            owingLabel.text = "\(owing)"
         }
+        
+        let owing = getMostCredits() - getCreditsOfMember( member )
+        owingLabel.text = "\(owing)"
     }
     
     private func getMostCredits() -> Int {

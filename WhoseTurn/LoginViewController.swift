@@ -28,6 +28,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.viewDidAppear( animated )
         
         self.enableControls( true )
+        
+        let currentUser = PFUser.currentUser()
+        // http://stackoverflow.com/a/12320222
+        // The modal view is not in the window's view hierarchy at viewDidLoad
+        if currentUser != nil && currentUser.isAuthenticated() {
+            performSegueWithIdentifier( showGroupsSegueId, sender: self )
+        }
     }
 
     @IBAction func onLoginButtonTapped(sender: AnyObject) {

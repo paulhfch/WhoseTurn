@@ -11,13 +11,10 @@ import UIKit
 class PayorPickerViewController : UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate {
     
     let payors: [User]
-    weak var textField: UITextField!
     weak var parentViewController: UIViewController!
     
-    init( payors: [User], textField: UITextField, parentViewController: UIViewController ){
+    init( payors: [User] ){
         self.payors = payors
-        self.textField = textField
-        self.parentViewController = parentViewController
         
         super.init( frame: CGRectMake( 0, 0, 100, 50 ) )
         self.dataSource = self
@@ -26,6 +23,12 @@ class PayorPickerViewController : UIPickerView, UIPickerViewDataSource, UIPicker
 
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func getSelectedPayor() -> String {
+        let index = self.selectedRowInComponent( 0 )
+        
+        return payors[index].username
     }
     
     // MARK: UIPickerViewDataSource
@@ -40,13 +43,5 @@ class PayorPickerViewController : UIPickerView, UIPickerViewDataSource, UIPicker
     // MARK: UIPickerViewDelegate
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
         return payors[row].username
-    }
-    
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        textField?.text = payors[row].username
-        
-        // MARK: TODO remove this once the input accessory view is in place
-        // dismisses input view
-        parentViewController.view.endEditing( true )
     }
 }

@@ -19,9 +19,12 @@ class NewPaymentViewController : UITableViewController {
     @IBOutlet weak var dateTextBox: UITextField!
     @IBOutlet weak var restaurantTextbox: UITextField!
     
-    var payorPickerToolbar: InputToolBarViewController!
-    var datePicker: DatePicker!
+    var payorPicker: PayorPickerViewController!
+    var datePicker: UIDatePicker!
     weak var membersPicker: MemberMultipleSelectionViewController!
+    
+    var payorPickerToolBar: InputViewToolBar!
+    var datePickerToolBar: InputViewToolBar!
     
     // MARK: UIViewController
     override func viewDidLoad() {
@@ -33,15 +36,33 @@ class NewPaymentViewController : UITableViewController {
     
     private func configurePayorField() {
         payorTextbox.text = PFUser.currentUser().username
-        payorTextbox.inputView = PayorPickerViewController( payors: members, textField: payorTextbox, parentViewController: self )
+        
+        payorPicker = PayorPickerViewController( payors: members )
+        payorTextbox.inputView = payorPicker
+        
+        payorPickerToolBar = InputViewToolBar( parentViewController: self )
+        payorPickerToolBar.doneHandler = {
+            self.payorTextbox.text = self.payorPicker.getSelectedPayor()
+            self.membersPicker.update( self.payorTextbox.text, self.members )
+        }
+
+        payorTextbox.inputAccessoryView = payorPickerToolBar
     }
     
     private func configureDateField() {
         let now = NSDate()
         dateTextBox.text = DayFormatter.stringFromDate( now )
 
-        datePicker = DatePicker( textField: dateTextBox )
-        dateTextBox.inputView = datePicker.view
+        datePicker = UIDatePicker()
+        datePicker.datePickerMode = UIDatePickerMode.Date
+        dateTextBox.inputView = datePicker
+        
+        datePickerToolBar = InputViewToolBar( parentViewController: self )
+        datePickerToolBar.doneHandler = {
+            self.dateTextBox.text = DayFormatter.stringFromDate( self.datePicker.date )
+        }
+        
+        dateTextBox.inputAccessoryView = datePickerToolBar
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

@@ -14,9 +14,22 @@ let showMemberSegueId = "showMembers"
 class GroupsViewController : UITableViewController {
     var groups: [String]!
     
+    func refresh() {
+        var user = User.currentUser()
+        user.fetch()
+        
+        groups = user.groups
+        
+        tableView.reloadData()
+    }
+    
     @IBAction func onLogoutButtonTapped(sender: AnyObject) {
         User.logOut()
         dismissViewControllerAnimated( true, completion: nil )
+    }
+
+    @IBAction func onAddButtonTapped(sender: AnyObject) {
+        AddGroupDialog( parentViewController: self ).show()
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

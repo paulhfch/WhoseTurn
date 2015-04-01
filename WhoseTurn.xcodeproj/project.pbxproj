@@ -15,6 +15,7 @@
 		162B72901AC4AD6A00A70899 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162B728F1AC4AD6A00A70899 /* User.swift */; };
 		162B72921AC4AF6900A70899 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162B72911AC4AF6900A70899 /* Group.swift */; };
 		162B72941AC4CDAC00A70899 /* MembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162B72931AC4CDAC00A70899 /* MembersViewController.swift */; };
+		1658B6771ACC2E3E008DC273 /* AddGroupDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1658B6761ACC2E3E008DC273 /* AddGroupDialog.swift */; };
 		166E03C81AC237A200169F33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166E03C71AC237A200169F33 /* AppDelegate.swift */; };
 		166E03CA1AC237A200169F33 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166E03C91AC237A200169F33 /* LoginViewController.swift */; };
 		166E03CD1AC237A200169F33 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 166E03CB1AC237A200169F33 /* Main.storyboard */; };
@@ -55,6 +56,7 @@
 		162B728F1AC4AD6A00A70899 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		162B72911AC4AF6900A70899 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		162B72931AC4CDAC00A70899 /* MembersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MembersViewController.swift; sourceTree = "<group>"; };
+		1658B6761ACC2E3E008DC273 /* AddGroupDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupDialog.swift; sourceTree = "<group>"; };
 		166E03C21AC237A200169F33 /* WhoseTurn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhoseTurn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		166E03C61AC237A200169F33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		166E03C71AC237A200169F33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				16A1B35F1AC6217E00C36D95 /* DatePicker.swift */,
 				161FE1091AC986AD00EAE9E3 /* InputViewToolBar.swift */,
 				16206B251ACC24C500D75730 /* Settings.swift */,
+				1658B6761ACC2E3E008DC273 /* AddGroupDialog.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 				166E03C81AC237A200169F33 /* AppDelegate.swift in Sources */,
 				16A1B3511AC5B0C400C36D95 /* PayorPickerViewController.swift in Sources */,
 				16A1B3641AC7193400C36D95 /* MemberMultipleSelectionViewController.swift in Sources */,
+				1658B6771ACC2E3E008DC273 /* AddGroupDialog.swift in Sources */,
 				16A1B3601AC6217E00C36D95 /* DatePicker.swift in Sources */,
 				162B72921AC4AF6900A70899 /* Group.swift in Sources */,
 				16D644E91AC4D8C200BE0E0F /* ProfileViewController.swift in Sources */,

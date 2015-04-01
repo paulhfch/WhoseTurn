@@ -367,7 +367,11 @@
                                 <action selector="onLogoutButtonTapped:" destination="c2I-9N-Xcb" id="Vl7-FP-PIG"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="edit" id="vag-z3-CIM"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="vag-z3-CIM">
+                            <connections>
+                                <action selector="onAddButtonTapped:" destination="c2I-9N-Xcb" id="Nwe-fM-b9x"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>

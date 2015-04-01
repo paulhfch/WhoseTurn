@@ -37,6 +37,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
+    // MARK: Actions
     @IBAction func onLoginButtonTapped(sender: AnyObject) {
         enableControls( false )
         
@@ -73,7 +74,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == showGroupsSegueId {
-            let user = PFUser.currentUser() as User
+            let user = User.currentUser() as User
             
             // segues to GroupsViweController via NavigationViewController
             var destViewController = segue.destinationViewController.viewControllers![0] as GroupsViewController

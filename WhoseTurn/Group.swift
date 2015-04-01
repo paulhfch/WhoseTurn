@@ -20,21 +20,21 @@ class Group : PFObject, PFSubclassing {
         return "Group"
     }
     
-    class func getGroupWithNameAsync( name : String, callback: Group -> Void ) {
+    class func getGroupWithNameAsync( name : String, callback: Group? -> Void ) {
         let query = Group.query()
         query.whereKey( Group.ColumnKey.name, equalTo: name )
         
         query.findObjectsInBackgroundWithBlock { ( groups: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
-                callback( groups.first as Group )
+                callback( groups.first as Group? )
             }
         }
     }
     
-    class func getGroupWithName( name: String ) -> Group {
+    class func getGroupWithName( name: String ) -> Group? {
         let query = Group.query()
         query.whereKey( Group.ColumnKey.name, equalTo: name )
      
-        return query.findObjects().first as Group
+        return query.findObjects().first as Group?
     }
 }

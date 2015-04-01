@@ -32,7 +32,7 @@ class MembersViewController : UITableViewController {
     
     private func displayVerificationCode() {
         Group.getGroupWithNameAsync( groupName, callback: { group in
-            let code = VerificationCode( from: group ).code
+            let code = VerificationCode( from: group! ).code
             self.verificationCodeLabel.text = "Group Code: \(code)"
         })
     }

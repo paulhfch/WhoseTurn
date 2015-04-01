@@ -39,7 +39,7 @@ class SignUpViewController: UITableViewController {
         }
         else {
             UIAlertView(title: "Joining Group",
-                message: "Group name does not match group code",
+                message: "Group does not exist or group name does not match group code",
                 delegate: nil,
                 cancelButtonTitle: "Try Again" ).show()
             
@@ -86,10 +86,13 @@ class SignUpViewController: UITableViewController {
     }
     
     private func validGroupCode() -> Bool {
-        let group = Group.getGroupWithName( groupNameText.text )
-        let groupCode = VerificationCode( from: group ).code
-        
-        return groupCodeText.text == groupCode
+        if let group = Group.getGroupWithName( groupNameText.text ) {
+            let groupCode = VerificationCode( from: group ).code
+            return groupCodeText.text == groupCode
+        }
+        else {
+            return false
+        }
     }
     
     @IBAction func onCancelButtonTapped(sender: AnyObject) {

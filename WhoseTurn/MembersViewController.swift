@@ -15,7 +15,7 @@ class MembersViewController : UITableViewController {
     
     let cellIdentifier = "memberCell"
     
-    var group: String!
+    var groupName: String!
     var payments: [Payment]?
     var members = [User]()
     var nextMemberToPay: String!
@@ -31,19 +31,20 @@ class MembersViewController : UITableViewController {
     }
     
     private func displayVerificationCode() {
-        let code = VerificationCode( from: group ).code
-        verificationCodeLabel.text = "Group Code: \(code)"
+        Group.getGroupWithNameAsync( groupName, callback: { group in
+            let code = VerificationCode( from: group ).code
+            self.verificationCodeLabel.text = "Group Code: \(code)"
+        })
     }
     
     // Make sure to refetch data when the view appears
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear( animated )
         
-        //MARK: TODO use promise?
-        Group( name: group ).getMembers { (members) -> Void in
+        User.getMembersInGroup ( groupName ) { (members) -> Void in
             self.members = members
             
-            Payment.getPaymentsForEveryoneIn( self.group, callback: { ( payments: [Payment]) -> Void in
+            Payment.getPaymentsForEveryoneIn( self.groupName, callback: { ( payments: [Payment]) -> Void in
                 self.payments = payments
                 self.nextMemberToPay = self.getNextToPay( members, payments )
                 
@@ -53,7 +54,7 @@ class MembersViewController : UITableViewController {
     }
     
     private func configureNavBar() {
-        self.title = group
+        self.title = groupName
 
         // http://stackoverflow.com/a/14448645
         // Removes UIToolBar top border line
@@ -65,7 +66,7 @@ class MembersViewController : UITableViewController {
             var destViewController = segue.destinationViewController as ProfileViewController
             
             destViewController.member = sender as String
-            destViewController.group = group
+            destViewController.group = groupName
             destViewController.payments = payments
             destViewController.members = members
         }
@@ -73,7 +74,7 @@ class MembersViewController : UITableViewController {
         if segue.identifier == showNewPaymentSegueId {
             var destViewController = segue.destinationViewController as NewPaymentViewController
             
-            destViewController.group = group
+            destViewController.group = groupName
             destViewController.members = members
         }
     }

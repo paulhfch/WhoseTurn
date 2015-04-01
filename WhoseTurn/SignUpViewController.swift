@@ -13,7 +13,7 @@ class SignUpViewController: UITableViewController {
     @IBOutlet weak var usernameText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var groupNameText: UITextField!
-    @IBOutlet weak var groupCode: UITextField!
+    @IBOutlet weak var groupCodeText: UITextField!
     
     // MARK: Actions
     @IBAction func onSignUpButtonTapped(sender: AnyObject) {
@@ -34,8 +34,16 @@ class SignUpViewController: UITableViewController {
         newUser.username = usernameText.text
         newUser.password = passwordText.text
         
-        if joiningGroup() && validGroupName() {
+        if joiningGroup() && validGroupCode() {
             newUser.groups = [ groupNameText.text ]
+        }
+        else {
+            UIAlertView(title: "Joining Group",
+                message: "Group name does not match group code",
+                delegate: nil,
+                cancelButtonTitle: "Try Again" ).show()
+            
+            return
         }
         
         newUser.signUpInBackgroundWithBlock { ( success: Bool, error: NSError!) -> Void in
@@ -64,8 +72,8 @@ class SignUpViewController: UITableViewController {
             return true
         }
         
-        if groupNameText.text != "" || groupCode.text != "" {
-            if groupNameText.text == "" || groupCode.text == "" {
+        if groupNameText.text != "" || groupCodeText.text != "" {
+            if groupNameText.text == "" || groupCodeText.text == "" {
                 return true
             }
         }
@@ -74,11 +82,14 @@ class SignUpViewController: UITableViewController {
     }
     
     private func joiningGroup() -> Bool {
-        return groupNameText.text != "" && groupCode.text != ""
+        return groupNameText.text != "" && groupCodeText.text != ""
     }
     
-    private func validGroupName() -> Bool {
-        return groupCode.text == VerificationCode( from: groupNameText.text ).code
+    private func validGroupCode() -> Bool {
+        let group = Group.getGroupWithName( groupNameText.text )
+        let groupCode = VerificationCode( from: group ).code
+        
+        return groupCodeText.text == groupCode
     }
     
     @IBAction func onCancelButtonTapped(sender: AnyObject) {

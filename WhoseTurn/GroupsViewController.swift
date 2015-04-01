@@ -48,7 +48,7 @@ class GroupsViewController : UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == showMemberSegueId {
             var destViewController = segue.destinationViewController as MembersViewController
-            destViewController.group = sender as String
+            destViewController.groupName = sender as String
         }
     }
 }

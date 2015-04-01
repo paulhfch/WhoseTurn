@@ -8,24 +8,33 @@
 
 import Foundation
 
-class Group {
-    var name : String
+class Group : PFObject, PFSubclassing {
     
-    init( name : String ){
-        self.name = name
+    struct ColumnKey {
+        static let name = "name"
     }
     
-    func getMembers( callback : ( members: [User]! ) -> Void ) {
-        let query = User.query()
-        query.whereKey( User.ColumnKey.groups, equalTo: name )
+    @NSManaged var name : String!
+    
+    class func parseClassName() -> String! {
+        return "Group"
+    }
+    
+    class func getGroupWithNameAsync( name : String, callback: Group -> Void ) {
+        let query = Group.query()
+        query.whereKey( Group.ColumnKey.name, equalTo: name )
         
-        query.findObjectsInBackgroundWithBlock { ( members: [AnyObject]!, error: NSError!) -> Void in
+        query.findObjectsInBackgroundWithBlock { ( groups: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
-                callback( members: members as [User]! )
-            }
-            else {
-                callback( members: nil )
+                callback( groups.first as Group )
             }
         }
+    }
+    
+    class func getGroupWithName( name: String ) -> Group {
+        let query = Group.query()
+        query.whereKey( Group.ColumnKey.name, equalTo: name )
+     
+        return query.findObjects().first as Group
     }
 }

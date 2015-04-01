@@ -24,10 +24,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func setupParse() {
         ParseCrashReporting.enable()
         
-        Parse.setApplicationId( "cDDheoVxP94gEneq12CmcxtdRe6LM3XVPIVIZdEP",
-            clientKey: "mxiI4PS0Rz1AbuSDWJJBgDZDcDlbx8UKYX1vCer4" )
+        Parse.setApplicationId( Settings.sharedInstance.parseAppId,
+            clientKey: Settings.sharedInstance.parseClientKey )
         
         User.registerSubclass()
+        Group.registerSubclass()
         Payment.registerSubclass()
     }
 

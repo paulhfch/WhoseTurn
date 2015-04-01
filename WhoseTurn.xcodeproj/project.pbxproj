@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		161FE10A1AC986AD00EAE9E3 /* InputViewToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161FE1091AC986AD00EAE9E3 /* InputViewToolBar.swift */; };
 		16206B221ACB799400D75730 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16206B211ACB799400D75730 /* SignUpViewController.swift */; };
+		16206B241ACC23D600D75730 /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16206B231ACC23D600D75730 /* Settings.plist */; };
+		16206B261ACC24C500D75730 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16206B251ACC24C500D75730 /* Settings.swift */; };
 		162B728C1AC4A70E00A70899 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162B728B1AC4A70E00A70899 /* GroupsViewController.swift */; };
 		162B72901AC4AD6A00A70899 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162B728F1AC4AD6A00A70899 /* User.swift */; };
 		162B72921AC4AF6900A70899 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162B72911AC4AF6900A70899 /* Group.swift */; };
@@ -46,6 +48,8 @@
 		0A7B807C30C0F3E8AC5AAD37 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		161FE1091AC986AD00EAE9E3 /* InputViewToolBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputViewToolBar.swift; sourceTree = "<group>"; };
 		16206B211ACB799400D75730 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		16206B231ACC23D600D75730 /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
+		16206B251ACC24C500D75730 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		162B728A1AC4A56800A70899 /* WhoseTurn-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WhoseTurn-Bridging-Header.h"; sourceTree = "<group>"; };
 		162B728B1AC4A70E00A70899 /* GroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		162B728F1AC4AD6A00A70899 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -106,7 +110,6 @@
 				162B728F1AC4AD6A00A70899 /* User.swift */,
 				162B72911AC4AF6900A70899 /* Group.swift */,
 				16A1B34D1AC5AAE900C36D95 /* Payment.swift */,
-				16CE30501ACB65F800F35D7D /* VerificationCode.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -150,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				166E03C61AC237A200169F33 /* Info.plist */,
+				16206B231ACC23D600D75730 /* Settings.plist */,
 				162B728A1AC4A56800A70899 /* WhoseTurn-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
@@ -190,10 +194,12 @@
 		16A1B34F1AC5B0AE00C36D95 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				16CE30501ACB65F800F35D7D /* VerificationCode.swift */,
 				16A1B3501AC5B0C400C36D95 /* PayorPickerViewController.swift */,
 				16A1B35B1AC61FCE00C36D95 /* DayFormatter.swift */,
 				16A1B35F1AC6217E00C36D95 /* DatePicker.swift */,
 				161FE1091AC986AD00EAE9E3 /* InputViewToolBar.swift */,
+				16206B251ACC24C500D75730 /* Settings.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -299,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				166E03CD1AC237A200169F33 /* Main.storyboard in Resources */,
+				16206B241ACC23D600D75730 /* Settings.plist in Resources */,
 				166E03D21AC237A200169F33 /* LaunchScreen.xib in Resources */,
 				166E03CF1AC237A200169F33 /* Images.xcassets in Resources */,
 			);
@@ -357,6 +364,7 @@
 				166E03CA1AC237A200169F33 /* LoginViewController.swift in Sources */,
 				16A1B35C1AC61FCE00C36D95 /* DayFormatter.swift in Sources */,
 				16206B221ACB799400D75730 /* SignUpViewController.swift in Sources */,
+				16206B261ACC24C500D75730 /* Settings.swift in Sources */,
 				166E03C81AC237A200169F33 /* AppDelegate.swift in Sources */,
 				16A1B3511AC5B0C400C36D95 /* PayorPickerViewController.swift in Sources */,
 				16A1B3641AC7193400C36D95 /* MemberMultipleSelectionViewController.swift in Sources */,

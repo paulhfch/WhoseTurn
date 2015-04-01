@@ -14,6 +14,7 @@ class NewPaymentViewController : UITableViewController {
     
     var group: String!
     var members: [User]!
+    var payor: String?
     
     @IBOutlet weak var payorTextbox: UITextField!
     @IBOutlet weak var dateTextBox: UITextField!
@@ -33,9 +34,13 @@ class NewPaymentViewController : UITableViewController {
         configurePayorField()
         configureDateField()
     }
-    
+
     private func configurePayorField() {
-        payorTextbox.text = PFUser.currentUser().username
+        if payor == nil {
+            payor = PFUser.currentUser().username
+        }
+        
+        payorTextbox.text = payor
         
         payorPicker = PayorPickerViewController( payors: members )
         payorTextbox.inputView = payorPicker

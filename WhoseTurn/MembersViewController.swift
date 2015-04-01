@@ -67,6 +67,7 @@ class MembersViewController : UITableViewController {
             destViewController.member = sender as String
             destViewController.group = group
             destViewController.payments = payments
+            destViewController.members = members
         }
         
         if segue.identifier == showNewPaymentSegueId {

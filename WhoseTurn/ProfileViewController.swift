@@ -12,6 +12,7 @@ let showPaymentHistorySegueId = "showPaymentHistory"
 
 class ProfileViewController : UITableViewController {
     var member: String!
+    var members: [User]!
     var group: String!
     var payments: [Payment]!
     
@@ -25,6 +26,18 @@ class ProfileViewController : UITableViewController {
         
         configureNavBar()
         updateView()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear( animated )
+
+        // Refreshed payments
+        Payment.getPaymentsForEveryoneIn( self.group, callback: { ( payments: [Payment]) -> Void in
+            self.payments = payments
+            
+            self.updateView()
+        })
+
     }
     
     private func configureNavBar() {
@@ -49,6 +62,14 @@ class ProfileViewController : UITableViewController {
             var destViewController = segue.destinationViewController as PaymentHistoryViewController
             
             destViewController.payments = Payment.getPaymentsOfMember( self.member, payments: self.payments )
+        }
+        
+        if segue.identifier == showNewPaymentSegueId {
+            var destViewController = segue.destinationViewController as NewPaymentViewController
+            
+            destViewController.payor = member
+            destViewController.group = group
+            destViewController.members = members
         }
     }
 }

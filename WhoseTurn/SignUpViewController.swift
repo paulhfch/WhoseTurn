@@ -34,7 +34,7 @@ class SignUpViewController: UITableViewController {
         newUser.username = usernameText.text
         newUser.password = passwordText.text
         
-        if validGroupName() {
+        if joiningGroup() && validGroupName() {
             newUser.groups = [ groupNameText.text ]
         }
         
@@ -48,9 +48,9 @@ class SignUpViewController: UITableViewController {
             }
             else {
                 UIAlertView(title: "Cannot Sign Up",
-                    message: error.localizedDescription,
+                    message: error.userInfo?["error"] as? String,
                     delegate: nil,
-                    cancelButtonTitle: "OK" )
+                    cancelButtonTitle: "OK" ).show()
             }
         }
     }
@@ -71,6 +71,10 @@ class SignUpViewController: UITableViewController {
         }
         
         return false
+    }
+    
+    private func joiningGroup() -> Bool {
+        return groupNameText.text != "" && groupCode.text != ""
     }
     
     private func validGroupName() -> Bool {

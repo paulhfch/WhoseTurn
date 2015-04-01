@@ -134,7 +134,7 @@
         <scene sceneID="KgE-u7-G8n">
             <objects>
                 <tableViewController id="vbX-CV-VMW" customClass="SignUpViewController" customModule="WhoseTurn" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Qx9-4b-tUx">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Qx9-4b-tUx">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -476,7 +476,7 @@
         <scene sceneID="mFN-bv-gxj">
             <objects>
                 <tableViewController id="Fcc-eb-zJ0" customClass="NewPaymentViewController" customModule="WhoseTurn" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Yvc-q4-UIv">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="static" style="grouped" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Yvc-q4-UIv">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -810,6 +810,34 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="zc1-Q2-42Z">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="WIv-jc-xS9">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WIv-jc-xS9" id="91N-1l-s4p">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HTC-EI-IC2">
+                                                    <rect key="frame" x="18" y="8" width="574" height="27"/>
+                                                    <state key="normal" title="Log Payment">
+                                                        <color key="titleColor" red="1" green="0.16537848050000001" blue="0.074147180810000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <segue destination="Fcc-eb-zJ0" kind="presentation" identifier="showNewPayment" id="Ldn-8v-IBN"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="HTC-EI-IC2" firstAttribute="leading" secondItem="91N-1l-s4p" secondAttribute="leadingMargin" constant="10" id="1sj-Mu-lNh"/>
+                                                <constraint firstItem="HTC-EI-IC2" firstAttribute="top" secondItem="91N-1l-s4p" secondAttribute="topMargin" id="3cl-Qh-aTB"/>
+                                                <constraint firstItem="HTC-EI-IC2" firstAttribute="bottom" secondItem="91N-1l-s4p" secondAttribute="bottomMargin" id="51o-6T-lgO"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="HTC-EI-IC2" secondAttribute="trailing" id="sQC-rc-DbI"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="3MD-MP-NgL" id="w1m-aM-zGA"/>
@@ -892,4 +920,7 @@
     <resources>
         <image name="logo" width="256" height="130"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Ldn-8v-IBN"/>
+    </inferredMetricsTieBreakers>
 </document>

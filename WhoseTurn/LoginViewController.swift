@@ -77,7 +77,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             
             // segues to GroupsViweController via NavigationViewController
             var destViewController = segue.destinationViewController.viewControllers![0] as GroupsViewController
-            destViewController.groups = user.getGroups()
+            destViewController.groups = user.groups
         }
     }
 }

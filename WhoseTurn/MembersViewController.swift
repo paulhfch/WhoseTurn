@@ -21,10 +21,18 @@ class MembersViewController : UITableViewController {
     var nextMemberToPay: String!
     
     @IBOutlet weak var navToolBar: UIToolbar!
+    @IBOutlet weak var verificationCodeLabel: UILabel!
     
     // MARK: UIViewController
     override func viewDidLoad() {
         configureNavBar()
+        
+        displayVerificationCode()
+    }
+    
+    private func displayVerificationCode() {
+        let code = VerificationCode( from: group ).code
+        verificationCodeLabel.text = "Group Code: \(code)"
     }
     
     // Make sure to refetch data when the view appears

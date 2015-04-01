@@ -17,7 +17,7 @@ class Group {
     
     func getMembers( callback : ( members: [User]! ) -> Void ) {
         let query = User.query()
-        query.whereKey( groupColumnKey, equalTo: name )
+        query.whereKey( User.ColumnKey.groups, equalTo: name )
         
         query.findObjectsInBackgroundWithBlock { ( members: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {

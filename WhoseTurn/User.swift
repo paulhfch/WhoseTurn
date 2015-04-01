@@ -8,13 +8,12 @@
 
 import Foundation
 
-let userClass = "User"
-let groupColumnKey = "groups"
-
-class User : PFUser {
+class User : PFUser, PFSubclassing {
     
-    func getGroups() -> [String]! {
-        return objectForKey( groupColumnKey ) as [String]!
+    struct ColumnKey {
+        static let groups = "groups"
     }
+    
+    @NSManaged var groups: [String]!
 
 }

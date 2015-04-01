@@ -34,16 +34,18 @@ class SignUpViewController: UITableViewController {
         newUser.username = usernameText.text
         newUser.password = passwordText.text
         
-        if joiningGroup() && validGroupCode() {
-            newUser.groups = [ groupNameText.text ]
-        }
-        else {
-            UIAlertView(title: "Joining Group",
-                message: "Group does not exist or group name does not match group code",
-                delegate: nil,
-                cancelButtonTitle: "Try Again" ).show()
-            
-            return
+        if joiningGroup() {
+            if validGroupCode() {
+                newUser.groups = [ groupNameText.text ]
+            }
+            else {
+                UIAlertView(title: "Joining Group",
+                    message: "Group does not exist or group name does not match group code",
+                    delegate: nil,
+                    cancelButtonTitle: "Try Again" ).show()
+                
+                return
+            }
         }
         
         newUser.signUpInBackgroundWithBlock { ( success: Bool, error: NSError!) -> Void in

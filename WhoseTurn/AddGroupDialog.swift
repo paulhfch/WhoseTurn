@@ -33,7 +33,11 @@ class AddGroupDialog {
                         cancelButtonTitle: "OK" ).show()
                 }
                 else {
-                    let currentUser = User.currentUser()
+                    let currentUser = User.currentUser() as User
+                    if  currentUser.groups == nil {
+                        currentUser.groups = [String]()
+                    }
+                        
                     currentUser.groups.append( groupName )
                     currentUser.save()
                     
@@ -59,8 +63,8 @@ class AddGroupDialog {
             }
         }
         
-        dialog.addAction( addAction )
         dialog.addAction( cancelAction )
+        dialog.addAction( addAction )
     }
     
     func show() {

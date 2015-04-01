@@ -358,9 +358,7 @@
                             <outlet property="delegate" destination="c2I-9N-Xcb" id="onF-Q7-age"/>
                         </connections>
                     </tableView>
-                    <toolbarItems>
-                        <barButtonItem title="Item" id="X9Y-v7-mcC"/>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Groups" id="CZk-uI-t0G">
                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="DIR-Fo-LiL">
                             <connections>
@@ -439,35 +437,13 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Group" id="E5F-Ep-N4W">
-                        <barButtonItem key="rightBarButtonItem" id="LKS-bA-TgB">
-                            <view key="customView" contentMode="scaleToFill" id="VTE-Kr-X5X">
-                                <rect key="frame" x="449" y="5" width="66" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RkL-XM-bJu">
-                                        <rect key="frame" x="0.0" y="0.0" width="66" height="33"/>
-                                        <items>
-                                            <barButtonItem systemItem="compose" id="VMH-j9-JLe">
-                                                <connections>
-                                                    <segue destination="Fcc-eb-zJ0" kind="presentation" identifier="showNewPayment" id="YSO-mD-a5G"/>
-                                                </connections>
-                                            </barButtonItem>
-                                            <barButtonItem enabled="NO" systemItem="add" id="rau-2h-APu"/>
-                                        </items>
-                                    </toolbar>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="RkL-XM-bJu" secondAttribute="bottom" id="8po-xJ-2Mc"/>
-                                    <constraint firstItem="RkL-XM-bJu" firstAttribute="top" secondItem="VTE-Kr-X5X" secondAttribute="top" id="F6m-AM-sws"/>
-                                    <constraint firstItem="RkL-XM-bJu" firstAttribute="leading" secondItem="VTE-Kr-X5X" secondAttribute="leading" id="JdQ-w7-LJr"/>
-                                    <constraint firstAttribute="trailing" secondItem="RkL-XM-bJu" secondAttribute="trailing" id="sE7-2p-idx"/>
-                                </constraints>
-                            </view>
+                        <barButtonItem key="rightBarButtonItem" id="apX-Gh-uu5">
+                            <connections>
+                                <segue destination="Fcc-eb-zJ0" kind="presentation" identifier="showNewPayment" id="orK-8U-vgu"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="navToolBar" destination="RkL-XM-bJu" id="KgB-jO-RMY"/>
                         <outlet property="verificationCodeLabel" destination="zed-cq-XV7" id="dMp-lh-f8B"/>
                         <segue destination="3MD-MP-NgL" kind="show" identifier="showProfile" id="88J-Jq-wTq"/>
                     </connections>
@@ -925,6 +901,6 @@
         <image name="logo" width="256" height="130"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="YSO-mD-a5G"/>
+        <segue reference="orK-8U-vgu"/>
     </inferredMetricsTieBreakers>
 </document>

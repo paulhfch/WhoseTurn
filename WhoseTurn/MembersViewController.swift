@@ -20,7 +20,6 @@ class MembersViewController : UITableViewController {
     var members = [User]()
     var nextMemberToPay: String!
     
-    @IBOutlet weak var navToolBar: UIToolbar!
     @IBOutlet weak var verificationCodeLabel: UILabel!
     
     // MARK: UIViewController
@@ -28,6 +27,10 @@ class MembersViewController : UITableViewController {
         configureNavBar()
         
         displayVerificationCode()
+    }
+    
+    private func configureNavBar() {
+        self.title = groupName
     }
     
     private func displayVerificationCode() {
@@ -52,15 +55,7 @@ class MembersViewController : UITableViewController {
             })
         }
     }
-    
-    private func configureNavBar() {
-        self.title = groupName
 
-        // http://stackoverflow.com/a/14448645
-        // Removes UIToolBar top border line
-        navToolBar.clipsToBounds = true
-    }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == showProfileSegueId {
             var destViewController = segue.destinationViewController as ProfileViewController

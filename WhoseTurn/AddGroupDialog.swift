@@ -16,18 +16,18 @@ class AddGroupDialog {
     init( parentViewController: GroupsViewController ) {
         self.parentViewController = parentViewController
         
-        dialog = UIAlertController(title: "Create a Group",
+        dialog = UIAlertController(title: "Create a New Group",
             message: nil,
             preferredStyle: UIAlertControllerStyle.Alert )
         
-        var addAction = UIAlertAction(title: "OK",
+        var addAction = UIAlertAction(title: "Create and Join",
             style: UIAlertActionStyle.Default) {
                 (_) in
                 let groupTextField = self.dialog.textFields![0] as UITextField
                 let groupName = groupTextField.text
                 
                 if let group = Group.getGroupWithName( groupName ) {
-                    UIAlertView(title: "Create A Group",
+                    UIAlertView(title: "Create a New Group",
                         message: "Group \"\(groupName)\" already exists",
                         delegate: nil,
                         cancelButtonTitle: "OK" ).show()

@@ -358,16 +358,23 @@
                             <outlet property="delegate" destination="c2I-9N-Xcb" id="onF-Q7-age"/>
                         </connections>
                     </tableView>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Groups" id="CZk-uI-t0G">
-                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="DIR-Fo-LiL">
+                    <toolbarItems>
+                        <barButtonItem title="Create Group" id="FLQ-z6-mej">
                             <connections>
-                                <action selector="onLogoutButtonTapped:" destination="c2I-9N-Xcb" id="Vl7-FP-PIG"/>
+                                <action selector="onAddButtonTapped:" destination="c2I-9N-Xcb" id="PJR-3J-KA0"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="vag-z3-CIM">
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="pag-85-RuG"/>
+                        <barButtonItem title="Join Group" id="a9p-5c-gl1">
                             <connections>
-                                <action selector="onAddButtonTapped:" destination="c2I-9N-Xcb" id="Nwe-fM-b9x"/>
+                                <action selector="onJoinButtonTapped:" destination="c2I-9N-Xcb" id="C2Z-Rj-GVl"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Groups" id="CZk-uI-t0G">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="DIR-Fo-LiL">
+                            <connections>
+                                <action selector="onLogoutButtonTapped:" destination="c2I-9N-Xcb" id="Vl7-FP-PIG"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -393,7 +400,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Code: ----" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zed-cq-XV7" userLabel="groupCodeLabel">
-                                    <rect key="frame" x="245" y="7" width="110" height="17"/>
+                                    <rect key="frame" x="245" y="6" width="110" height="17"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
@@ -420,7 +427,7 @@
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Your Turn to Pay!" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lD1-FZ-r0r">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="1" green="0.16537848050000001" blue="0.074147180810000005" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="1" green="0.45995493110000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -436,6 +443,7 @@
                             <outlet property="delegate" destination="FPo-86-vuF" id="nS4-q8-leb"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Group" id="E5F-Ep-N4W">
                         <barButtonItem key="rightBarButtonItem" id="apX-Gh-uu5">
                             <connections>
@@ -790,40 +798,22 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection id="zc1-Q2-42Z">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="WIv-jc-xS9">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WIv-jc-xS9" id="91N-1l-s4p">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HTC-EI-IC2">
-                                                    <rect key="frame" x="18" y="8" width="574" height="27"/>
-                                                    <state key="normal" title="Log Payment">
-                                                        <color key="titleColor" red="1" green="0.16537848050000001" blue="0.074147180810000005" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <segue destination="Fcc-eb-zJ0" kind="presentation" identifier="showNewPayment" id="Ldn-8v-IBN"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="HTC-EI-IC2" firstAttribute="leading" secondItem="91N-1l-s4p" secondAttribute="leadingMargin" constant="10" id="1sj-Mu-lNh"/>
-                                                <constraint firstItem="HTC-EI-IC2" firstAttribute="top" secondItem="91N-1l-s4p" secondAttribute="topMargin" id="3cl-Qh-aTB"/>
-                                                <constraint firstItem="HTC-EI-IC2" firstAttribute="bottom" secondItem="91N-1l-s4p" secondAttribute="bottomMargin" id="51o-6T-lgO"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="HTC-EI-IC2" secondAttribute="trailing" id="sQC-rc-DbI"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="3MD-MP-NgL" id="w1m-aM-zGA"/>
                             <outlet property="delegate" destination="3MD-MP-NgL" id="bou-qP-l7U"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="1PX-qb-Oqe"/>
+                        <barButtonItem title="Log Payment" id="XAG-bY-SK4">
+                            <color key="tintColor" red="1" green="0.45995493110000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="Fcc-eb-zJ0" kind="presentation" identifier="showNewPayment" id="NbC-vu-i7u"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="WYd-37-1GK"/>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="Profile" id="Rkj-lT-iWO"/>
                     <connections>
                         <outlet property="lastPaymentLabel" destination="T6n-sa-e8Y" id="CH2-bA-FEZ"/>
@@ -883,11 +873,14 @@
         <!--Navigation Controller-->
         <scene sceneID="grX-QH-lqe">
             <objects>
-                <navigationController id="tyr-2i-7qq" sceneMemberID="viewController">
+                <navigationController toolbarHidden="NO" id="tyr-2i-7qq" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2J4-KW-GPc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="1Qc-vH-vOs">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="c2I-9N-Xcb" kind="relationship" relationship="rootViewController" id="4Pb-Mb-WAA"/>
                     </connections>

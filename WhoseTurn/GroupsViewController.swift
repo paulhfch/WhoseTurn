@@ -23,6 +23,7 @@ class GroupsViewController : UITableViewController {
         tableView.reloadData()
     }
     
+    // MAKR: Actions
     @IBAction func onLogoutButtonTapped(sender: AnyObject) {
         User.logOut()
         dismissViewControllerAnimated( true, completion: nil )
@@ -32,6 +33,11 @@ class GroupsViewController : UITableViewController {
         AddGroupDialog( parentViewController: self ).show()
     }
     
+    @IBAction func onJoinButtonTapped(sender: AnyObject) {
+        JoinGroupDialog( parentViewController: self ).show()
+    }
+    
+    // MARK: UITableViewDelegate
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let index = indexPath.row
         

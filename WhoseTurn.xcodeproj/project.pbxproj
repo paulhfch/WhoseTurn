@@ -29,6 +29,7 @@
 		16A1B3601AC6217E00C36D95 /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A1B35F1AC6217E00C36D95 /* DatePicker.swift */; };
 		16A1B3621AC7086000C36D95 /* PaymentHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A1B3611AC7086000C36D95 /* PaymentHistoryViewController.swift */; };
 		16A1B3641AC7193400C36D95 /* MemberMultipleSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A1B3631AC7193400C36D95 /* MemberMultipleSelectionViewController.swift */; };
+		16C1A0E51ACD6EBB0083D3C4 /* JoinGroupDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C1A0E41ACD6EBB0083D3C4 /* JoinGroupDialog.swift */; };
 		16CE30511ACB65F800F35D7D /* VerificationCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CE30501ACB65F800F35D7D /* VerificationCode.swift */; };
 		16D644E91AC4D8C200BE0E0F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D644E81AC4D8C200BE0E0F /* ProfileViewController.swift */; };
 		E79FCF117FB6D94358448040 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A41D6344AB15F1FF7D817C77 /* libPods.a */; };
@@ -74,6 +75,7 @@
 		16A1B35F1AC6217E00C36D95 /* DatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
 		16A1B3611AC7086000C36D95 /* PaymentHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentHistoryViewController.swift; sourceTree = "<group>"; };
 		16A1B3631AC7193400C36D95 /* MemberMultipleSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberMultipleSelectionViewController.swift; sourceTree = "<group>"; };
+		16C1A0E41ACD6EBB0083D3C4 /* JoinGroupDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinGroupDialog.swift; sourceTree = "<group>"; };
 		16CE30501ACB65F800F35D7D /* VerificationCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerificationCode.swift; sourceTree = "<group>"; };
 		16D644E81AC4D8C200BE0E0F /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		A41D6344AB15F1FF7D817C77 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -203,6 +205,7 @@
 				161FE1091AC986AD00EAE9E3 /* InputViewToolBar.swift */,
 				16206B251ACC24C500D75730 /* Settings.swift */,
 				1658B6761ACC2E3E008DC273 /* AddGroupDialog.swift */,
+				16C1A0E41ACD6EBB0083D3C4 /* JoinGroupDialog.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				1658B6771ACC2E3E008DC273 /* AddGroupDialog.swift in Sources */,
 				16A1B3601AC6217E00C36D95 /* DatePicker.swift in Sources */,
 				162B72921AC4AF6900A70899 /* Group.swift in Sources */,
+				16C1A0E51ACD6EBB0083D3C4 /* JoinGroupDialog.swift in Sources */,
 				16D644E91AC4D8C200BE0E0F /* ProfileViewController.swift in Sources */,
 				161FE10A1AC986AD00EAE9E3 /* InputViewToolBar.swift in Sources */,
 				162B72941AC4CDAC00A70899 /* MembersViewController.swift in Sources */,

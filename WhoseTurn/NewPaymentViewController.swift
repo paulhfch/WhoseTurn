@@ -40,18 +40,22 @@ class NewPaymentViewController : UITableViewController {
             payor = PFUser.currentUser().username
         }
         
-        payorTextbox.text = payor
-        
+        setPayor( payor!, textField: payorTextbox )
+
         payorPicker = PayorPickerViewController( payors: members )
         payorTextbox.inputView = payorPicker
         
         payorPickerToolBar = InputViewToolBar( parentViewController: self )
         payorPickerToolBar.doneHandler = {
-            self.payorTextbox.text = self.payorPicker.getSelectedPayor()
-            self.membersPicker.update( self.payorTextbox.text, self.members )
+            self.setPayor( self.payorPicker.getSelectedPayor(), textField: self.payorTextbox )
         }
 
         payorTextbox.inputAccessoryView = payorPickerToolBar
+    }
+    
+    private func setPayor( payor: String, textField: UITextField ){
+        textField.text = payor
+        membersPicker.update( textField.text, self.members )
     }
     
     private func configureDateField() {

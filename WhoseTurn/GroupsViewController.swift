@@ -23,6 +23,14 @@ class GroupsViewController : UITableViewController {
         tableView.reloadData()
     }
     
+    // MARK: UIViewController
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == showMemberSegueId {
+            var destViewController = segue.destinationViewController as MembersViewController
+            destViewController.groupName = sender as String
+        }
+    }
+    
     // MAKR: Actions
     @IBAction func onLogoutButtonTapped(sender: AnyObject) {
         User.logOut()
@@ -64,10 +72,43 @@ class GroupsViewController : UITableViewController {
         performSegueWithIdentifier( showMemberSegueId, sender: groupName )
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == showMemberSegueId {
-            var destViewController = segue.destinationViewController as MembersViewController
-            destViewController.groupName = sender as String
+    // http://stackoverflow.com/a/26338310
+    // Customizes table row actions
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
+        var leaveButton = UITableViewRowAction( style: .Default, title: "Leave Group", handler: { (action, indexPath) in
+            self.tableView.dataSource?.tableView?(
+                self.tableView,
+                commitEditingStyle: .Delete,
+                forRowAtIndexPath: indexPath
+            )
+            
+            return
+        })
+        
+        leaveButton.backgroundColor = UIColor.redColor()
+        
+        return [leaveButton]
+    }
+    
+    // http://www.ioscreator.com/tutorials/delete-rows-table-view-ios8-swift
+    // enables "swipe-to-delete"
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            let groupName = self.groups[indexPath.row]
+            
+            var currentUser = User.currentUser()
+            currentUser.groups.removeAtIndex( indexPath.row )
+            self.groups.removeAtIndex( indexPath.row )
+            tableView.deleteRowsAtIndexPaths( [indexPath], withRowAnimation: UITableViewRowAnimation.Automatic )
+            
+            currentUser.saveInBackgroundWithBlock({ (success: Bool, errro: NSError!) -> Void in
+                if !success {
+                    UIAlertView(title: "Cannot Leave Group \(groupName)",
+                        message: "Are you connected to the Internet?",
+                        delegate: nil,
+                        cancelButtonTitle: "OK" ).show()
+                }
+            })  
         }
     }
 }

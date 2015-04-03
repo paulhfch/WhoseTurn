@@ -97,6 +97,9 @@ class NewPaymentViewController : UITableViewController {
     }
     
     @IBAction func onPayButtonTapped(sender: AnyObject) {
+        let payorButton = sender as UIButton
+        payorButton.enabled = false
+        
         var payment = Payment()
         payment.payor = payorTextbox.text
         payment.group = group
@@ -104,12 +107,19 @@ class NewPaymentViewController : UITableViewController {
         payment.date = DayFormatter.dateFromString( dateTextBox.text )
         payment.paidFor = membersPicker.getSelectedMembers()
         
-        // MARK: TODO some validation here please
-        
         payment.saveInBackgroundWithBlock { (success: Bool, error: NSError!) -> Void in
-            self.presentingViewController?.dismissViewControllerAnimated( true, completion: nil )
-            
-            return
+            if success {
+                self.presentingViewController?.dismissViewControllerAnimated( true, completion: nil )
+            }
+            else {
+                payorButton.enabled = true
+                
+                UIAlertView(title: "Cannot Save Payment Record",
+                    message: "Are you connected to the Internet?",
+                    delegate: nil,
+                    cancelButtonTitle: "OK" ).show()
+            }
+
         }
     }
 }

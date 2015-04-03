@@ -12,7 +12,7 @@ class PaymentHistoryViewController: UITableViewController {
     
     let cellIdentifier = "paymentHistoryCell"
     
-    var payments : [Payment]?
+    var payments: [Payment]?
     
     // MARK: UIViewController
     override func viewDidLoad() {
@@ -38,8 +38,6 @@ class PaymentHistoryViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        
         var cell = tableView.dequeueReusableCellWithIdentifier( cellIdentifier ) as PaymentHistoryCell
         
         if let paymentRecords = payments {
@@ -48,6 +46,18 @@ class PaymentHistoryViewController: UITableViewController {
             cell.dateLabel.text = DayFormatter.stringFromDate( payment.date )
         }
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            let payment = self.payments![indexPath.row]
+            payment.deleteInBackgroundWithBlock({ (success: Bool, error: NSError!) -> Void in
+                if success {
+                    self.payments!.removeAtIndex( indexPath.row )
+                    tableView.deleteRowsAtIndexPaths( [indexPath], withRowAnimation: UITableViewRowAnimation.Automatic )
+                }
+            })
+        }
     }
 }
 

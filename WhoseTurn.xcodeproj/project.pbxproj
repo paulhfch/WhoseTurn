@@ -21,6 +21,9 @@
 		16583EE71AD08F230096C747 /* Pods-WhoseTurn.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 16583EE51AD08F230096C747 /* Pods-WhoseTurn.release.xcconfig */; };
 		16583EEA1AD08F370096C747 /* Pods-WhoseTurnTests.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 16583EE81AD08F370096C747 /* Pods-WhoseTurnTests.debug.xcconfig */; };
 		16583EEB1AD08F370096C747 /* Pods-WhoseTurnTests.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 16583EE91AD08F370096C747 /* Pods-WhoseTurnTests.release.xcconfig */; };
+		16583EED1AD091300096C747 /* GroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16583EEC1AD091300096C747 /* GroupTests.swift */; };
+		16583EEE1AD091390096C747 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162B72911AC4AF6900A70899 /* Group.swift */; };
+		16583EEF1AD091780096C747 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162B728F1AC4AD6A00A70899 /* User.swift */; };
 		1658B6771ACC2E3E008DC273 /* AddGroupDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1658B6761ACC2E3E008DC273 /* AddGroupDialog.swift */; };
 		166836281AD087280018C857 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A1B34D1AC5AAE900C36D95 /* Payment.swift */; };
 		166836291AD0898F0018C857 /* DayFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A1B35B1AC61FCE00C36D95 /* DayFormatter.swift */; };
@@ -67,6 +70,7 @@
 		16583EE51AD08F230096C747 /* Pods-WhoseTurn.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-WhoseTurn.release.xcconfig"; path = "Pods/Target Support Files/Pods-WhoseTurn/Pods-WhoseTurn.release.xcconfig"; sourceTree = "<group>"; };
 		16583EE81AD08F370096C747 /* Pods-WhoseTurnTests.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-WhoseTurnTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WhoseTurnTests/Pods-WhoseTurnTests.debug.xcconfig"; sourceTree = "<group>"; };
 		16583EE91AD08F370096C747 /* Pods-WhoseTurnTests.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-WhoseTurnTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WhoseTurnTests/Pods-WhoseTurnTests.release.xcconfig"; sourceTree = "<group>"; };
+		16583EEC1AD091300096C747 /* GroupTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTests.swift; sourceTree = "<group>"; };
 		1658B6761ACC2E3E008DC273 /* AddGroupDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupDialog.swift; sourceTree = "<group>"; };
 		166E03C21AC237A200169F33 /* WhoseTurn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhoseTurn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		166E03C61AC237A200169F33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -181,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				166E03DD1AC237A200169F33 /* PaymentTests.swift */,
+				16583EEC1AD091300096C747 /* GroupTests.swift */,
 				166E03DB1AC237A200169F33 /* Supporting Files */,
 			);
 			path = WhoseTurnTests;
@@ -447,7 +452,10 @@
 			files = (
 				166836291AD0898F0018C857 /* DayFormatter.swift in Sources */,
 				166836281AD087280018C857 /* Payment.swift in Sources */,
+				16583EEF1AD091780096C747 /* User.swift in Sources */,
 				166E03DE1AC237A200169F33 /* PaymentTests.swift in Sources */,
+				16583EEE1AD091390096C747 /* Group.swift in Sources */,
+				16583EED1AD091300096C747 /* GroupTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

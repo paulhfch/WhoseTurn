@@ -12,6 +12,7 @@ import XCTest
 class PaymentTests: XCTestCase {
     
     override func setUp() {
+        super.setUp()
         Payment.registerSubclass() // required by Parse SDK
     }
     

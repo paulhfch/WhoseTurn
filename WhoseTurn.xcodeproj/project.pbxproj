@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		057BBD5B66D552E14B6CA4B6 /* libPods-WhoseTurnTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 32E09732DBC42C5D343DA722 /* libPods-WhoseTurnTests.a */; };
+		130BAE8634F3FD6C650C3B03 /* libPods-WhoseTurn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4595657EEB2931B464D5A182 /* libPods-WhoseTurn.a */; };
 		161FE10A1AC986AD00EAE9E3 /* InputViewToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161FE1091AC986AD00EAE9E3 /* InputViewToolBar.swift */; };
 		16206B221ACB799400D75730 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16206B211ACB799400D75730 /* SignUpViewController.swift */; };
 		16206B241ACC23D600D75730 /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16206B231ACC23D600D75730 /* Settings.plist */; };
@@ -15,13 +17,19 @@
 		162B72901AC4AD6A00A70899 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162B728F1AC4AD6A00A70899 /* User.swift */; };
 		162B72921AC4AF6900A70899 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162B72911AC4AF6900A70899 /* Group.swift */; };
 		162B72941AC4CDAC00A70899 /* MembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162B72931AC4CDAC00A70899 /* MembersViewController.swift */; };
+		16583EE61AD08F230096C747 /* Pods-WhoseTurn.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 16583EE41AD08F230096C747 /* Pods-WhoseTurn.debug.xcconfig */; };
+		16583EE71AD08F230096C747 /* Pods-WhoseTurn.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 16583EE51AD08F230096C747 /* Pods-WhoseTurn.release.xcconfig */; };
+		16583EEA1AD08F370096C747 /* Pods-WhoseTurnTests.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 16583EE81AD08F370096C747 /* Pods-WhoseTurnTests.debug.xcconfig */; };
+		16583EEB1AD08F370096C747 /* Pods-WhoseTurnTests.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 16583EE91AD08F370096C747 /* Pods-WhoseTurnTests.release.xcconfig */; };
 		1658B6771ACC2E3E008DC273 /* AddGroupDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1658B6761ACC2E3E008DC273 /* AddGroupDialog.swift */; };
+		166836281AD087280018C857 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A1B34D1AC5AAE900C36D95 /* Payment.swift */; };
+		166836291AD0898F0018C857 /* DayFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A1B35B1AC61FCE00C36D95 /* DayFormatter.swift */; };
 		166E03C81AC237A200169F33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166E03C71AC237A200169F33 /* AppDelegate.swift */; };
 		166E03CA1AC237A200169F33 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166E03C91AC237A200169F33 /* LoginViewController.swift */; };
 		166E03CD1AC237A200169F33 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 166E03CB1AC237A200169F33 /* Main.storyboard */; };
 		166E03CF1AC237A200169F33 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 166E03CE1AC237A200169F33 /* Images.xcassets */; };
 		166E03D21AC237A200169F33 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 166E03D01AC237A200169F33 /* LaunchScreen.xib */; };
-		166E03DE1AC237A200169F33 /* WhoseTurnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166E03DD1AC237A200169F33 /* WhoseTurnTests.swift */; };
+		166E03DE1AC237A200169F33 /* PaymentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166E03DD1AC237A200169F33 /* PaymentTests.swift */; };
 		16A1B34C1AC58BB300C36D95 /* NewPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A1B34B1AC58BB300C36D95 /* NewPaymentViewController.swift */; };
 		16A1B34E1AC5AAE900C36D95 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A1B34D1AC5AAE900C36D95 /* Payment.swift */; };
 		16A1B3511AC5B0C400C36D95 /* PayorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A1B3501AC5B0C400C36D95 /* PayorPickerViewController.swift */; };
@@ -46,8 +54,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0473FCBA44B894B231F42754 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		0A7B807C30C0F3E8AC5AAD37 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		161FE1091AC986AD00EAE9E3 /* InputViewToolBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputViewToolBar.swift; sourceTree = "<group>"; };
 		16206B211ACB799400D75730 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		16206B231ACC23D600D75730 /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
@@ -57,6 +63,10 @@
 		162B728F1AC4AD6A00A70899 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		162B72911AC4AF6900A70899 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		162B72931AC4CDAC00A70899 /* MembersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MembersViewController.swift; sourceTree = "<group>"; };
+		16583EE41AD08F230096C747 /* Pods-WhoseTurn.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-WhoseTurn.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WhoseTurn/Pods-WhoseTurn.debug.xcconfig"; sourceTree = "<group>"; };
+		16583EE51AD08F230096C747 /* Pods-WhoseTurn.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-WhoseTurn.release.xcconfig"; path = "Pods/Target Support Files/Pods-WhoseTurn/Pods-WhoseTurn.release.xcconfig"; sourceTree = "<group>"; };
+		16583EE81AD08F370096C747 /* Pods-WhoseTurnTests.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-WhoseTurnTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WhoseTurnTests/Pods-WhoseTurnTests.debug.xcconfig"; sourceTree = "<group>"; };
+		16583EE91AD08F370096C747 /* Pods-WhoseTurnTests.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-WhoseTurnTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WhoseTurnTests/Pods-WhoseTurnTests.release.xcconfig"; sourceTree = "<group>"; };
 		1658B6761ACC2E3E008DC273 /* AddGroupDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupDialog.swift; sourceTree = "<group>"; };
 		166E03C21AC237A200169F33 /* WhoseTurn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhoseTurn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		166E03C61AC237A200169F33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -67,7 +77,7 @@
 		166E03D11AC237A200169F33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		166E03D71AC237A200169F33 /* WhoseTurnTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhoseTurnTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		166E03DC1AC237A200169F33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		166E03DD1AC237A200169F33 /* WhoseTurnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhoseTurnTests.swift; sourceTree = "<group>"; };
+		166E03DD1AC237A200169F33 /* PaymentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentTests.swift; sourceTree = "<group>"; };
 		16A1B34B1AC58BB300C36D95 /* NewPaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPaymentViewController.swift; sourceTree = "<group>"; };
 		16A1B34D1AC5AAE900C36D95 /* Payment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
 		16A1B3501AC5B0C400C36D95 /* PayorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayorPickerViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +88,8 @@
 		16C1A0E41ACD6EBB0083D3C4 /* JoinGroupDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinGroupDialog.swift; sourceTree = "<group>"; };
 		16CE30501ACB65F800F35D7D /* VerificationCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerificationCode.swift; sourceTree = "<group>"; };
 		16D644E81AC4D8C200BE0E0F /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		32E09732DBC42C5D343DA722 /* libPods-WhoseTurnTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WhoseTurnTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4595657EEB2931B464D5A182 /* libPods-WhoseTurn.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WhoseTurn.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A41D6344AB15F1FF7D817C77 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -87,6 +99,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E79FCF117FB6D94358448040 /* libPods.a in Frameworks */,
+				130BAE8634F3FD6C650C3B03 /* libPods-WhoseTurn.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				057BBD5B66D552E14B6CA4B6 /* libPods-WhoseTurnTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,7 +180,7 @@
 		166E03DA1AC237A200169F33 /* WhoseTurnTests */ = {
 			isa = PBXGroup;
 			children = (
-				166E03DD1AC237A200169F33 /* WhoseTurnTests.swift */,
+				166E03DD1AC237A200169F33 /* PaymentTests.swift */,
 				166E03DB1AC237A200169F33 /* Supporting Files */,
 			);
 			path = WhoseTurnTests;
@@ -214,6 +228,8 @@
 			isa = PBXGroup;
 			children = (
 				A41D6344AB15F1FF7D817C77 /* libPods.a */,
+				4595657EEB2931B464D5A182 /* libPods-WhoseTurn.a */,
+				32E09732DBC42C5D343DA722 /* libPods-WhoseTurnTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -221,8 +237,10 @@
 		9ED9E78E0F4ADBC268171F37 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				0473FCBA44B894B231F42754 /* Pods.debug.xcconfig */,
-				0A7B807C30C0F3E8AC5AAD37 /* Pods.release.xcconfig */,
+				16583EE81AD08F370096C747 /* Pods-WhoseTurnTests.debug.xcconfig */,
+				16583EE91AD08F370096C747 /* Pods-WhoseTurnTests.release.xcconfig */,
+				16583EE41AD08F230096C747 /* Pods-WhoseTurn.debug.xcconfig */,
+				16583EE51AD08F230096C747 /* Pods-WhoseTurn.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -253,9 +271,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 166E03E41AC237A200169F33 /* Build configuration list for PBXNativeTarget "WhoseTurnTests" */;
 			buildPhases = (
+				4FCB15AAAAC7B2C725B17539 /* Check Pods Manifest.lock */,
 				166E03D31AC237A200169F33 /* Sources */,
 				166E03D41AC237A200169F33 /* Frameworks */,
 				166E03D51AC237A200169F33 /* Resources */,
+				05591EB556ECFA494CFEBA97 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -310,10 +330,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16583EEA1AD08F370096C747 /* Pods-WhoseTurnTests.debug.xcconfig in Resources */,
 				166E03CD1AC237A200169F33 /* Main.storyboard in Resources */,
+				16583EE71AD08F230096C747 /* Pods-WhoseTurn.release.xcconfig in Resources */,
 				16206B241ACC23D600D75730 /* Settings.plist in Resources */,
+				16583EE61AD08F230096C747 /* Pods-WhoseTurn.debug.xcconfig in Resources */,
 				166E03D21AC237A200169F33 /* LaunchScreen.xib in Resources */,
 				166E03CF1AC237A200169F33 /* Images.xcassets in Resources */,
+				16583EEB1AD08F370096C747 /* Pods-WhoseTurnTests.release.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,6 +351,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		05591EB556ECFA494CFEBA97 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WhoseTurnTests/Pods-WhoseTurnTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		37AD988782C9419FD5C68A3F /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -339,7 +378,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WhoseTurn/Pods-WhoseTurn-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4FCB15AAAAC7B2C725B17539 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		9AEEF48EC3F4F86FE6368006 /* Check Pods Manifest.lock */ = {
@@ -391,7 +445,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				166E03DE1AC237A200169F33 /* WhoseTurnTests.swift in Sources */,
+				166836291AD0898F0018C857 /* DayFormatter.swift in Sources */,
+				166836281AD087280018C857 /* Payment.swift in Sources */,
+				166E03DE1AC237A200169F33 /* PaymentTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,6 +519,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "WhoseTurn/WhoseTurn-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -498,13 +555,14 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "WhoseTurn/WhoseTurn-Bridging-Header.h";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		166E03E21AC237A200169F33 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0473FCBA44B894B231F42754 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 16583EE41AD08F230096C747 /* Pods-WhoseTurn.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -519,7 +577,7 @@
 		};
 		166E03E31AC237A200169F33 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0A7B807C30C0F3E8AC5AAD37 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 16583EE51AD08F230096C747 /* Pods-WhoseTurn.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -534,6 +592,7 @@
 		};
 		166E03E51AC237A200169F33 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16583EE81AD08F370096C747 /* Pods-WhoseTurnTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -553,6 +612,7 @@
 		};
 		166E03E61AC237A200169F33 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16583EE91AD08F370096C747 /* Pods-WhoseTurnTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (

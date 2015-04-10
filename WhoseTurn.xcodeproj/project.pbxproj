@@ -17,10 +17,6 @@
 		162B72901AC4AD6A00A70899 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162B728F1AC4AD6A00A70899 /* User.swift */; };
 		162B72921AC4AF6900A70899 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162B72911AC4AF6900A70899 /* Group.swift */; };
 		162B72941AC4CDAC00A70899 /* MembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162B72931AC4CDAC00A70899 /* MembersViewController.swift */; };
-		16583EE61AD08F230096C747 /* Pods-WhoseTurn.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 16583EE41AD08F230096C747 /* Pods-WhoseTurn.debug.xcconfig */; };
-		16583EE71AD08F230096C747 /* Pods-WhoseTurn.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 16583EE51AD08F230096C747 /* Pods-WhoseTurn.release.xcconfig */; };
-		16583EEA1AD08F370096C747 /* Pods-WhoseTurnTests.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 16583EE81AD08F370096C747 /* Pods-WhoseTurnTests.debug.xcconfig */; };
-		16583EEB1AD08F370096C747 /* Pods-WhoseTurnTests.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 16583EE91AD08F370096C747 /* Pods-WhoseTurnTests.release.xcconfig */; };
 		16583EED1AD091300096C747 /* GroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16583EEC1AD091300096C747 /* GroupTests.swift */; };
 		16583EEE1AD091390096C747 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162B72911AC4AF6900A70899 /* Group.swift */; };
 		16583EEF1AD091780096C747 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162B728F1AC4AD6A00A70899 /* User.swift */; };
@@ -257,6 +253,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 166E03E11AC237A200169F33 /* Build configuration list for PBXNativeTarget "WhoseTurn" */;
 			buildPhases = (
+				169C58E71AD72AAB008FFDC7 /* ShellScript */,
 				9AEEF48EC3F4F86FE6368006 /* Check Pods Manifest.lock */,
 				166E03BE1AC237A100169F33 /* Sources */,
 				166E03BF1AC237A100169F33 /* Frameworks */,
@@ -298,7 +295,7 @@
 		166E03BA1AC237A100169F33 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0620;
+				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = PopoWorks;
 				TargetAttributes = {
 					166E03C11AC237A100169F33 = {
@@ -335,14 +332,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16583EEA1AD08F370096C747 /* Pods-WhoseTurnTests.debug.xcconfig in Resources */,
 				166E03CD1AC237A200169F33 /* Main.storyboard in Resources */,
-				16583EE71AD08F230096C747 /* Pods-WhoseTurn.release.xcconfig in Resources */,
 				16206B241ACC23D600D75730 /* Settings.plist in Resources */,
-				16583EE61AD08F230096C747 /* Pods-WhoseTurn.debug.xcconfig in Resources */,
 				166E03D21AC237A200169F33 /* LaunchScreen.xib in Resources */,
 				166E03CF1AC237A200169F33 /* Images.xcassets in Resources */,
-				16583EEB1AD08F370096C747 /* Pods-WhoseTurnTests.release.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,6 +363,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WhoseTurnTests/Pods-WhoseTurnTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		169C58E71AD72AAB008FFDC7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"";
 		};
 		37AD988782C9419FD5C68A3F /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;

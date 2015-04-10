@@ -16,26 +16,26 @@ class Group : PFObject, PFSubclassing {
     
     @NSManaged var name : String!
     
-    class func parseClassName() -> String! {
+    class func parseClassName() -> String {
         return "Group"
     }
     
     class func getGroupWithNameAsync( name : String, callback: Group? -> Void ) {
         let query = Group.query()
-        query.whereKey( Group.ColumnKey.name, equalTo: name )
-        
-        query.findObjectsInBackgroundWithBlock { ( groups: [AnyObject]!, error: NSError!) -> Void in
+        query!.whereKey( Group.ColumnKey.name, equalTo: name )
+    
+        query!.findObjectsInBackgroundWithBlock { ( groups: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {
-                callback( groups.first as Group? )
+                callback( groups!.first as? Group )
             }
         }
     }
     
     class func getGroupWithName( name: String ) -> Group? {
         let query = Group.query()
-        query.whereKey( Group.ColumnKey.name, equalTo: name )
+        query!.whereKey( Group.ColumnKey.name, equalTo: name )
      
-        return query.findObjects().first as Group?
+        return query!.findObjects()!.first as? Group
     }
     
     /**
@@ -51,17 +51,17 @@ class Group : PFObject, PFSubclassing {
             let memberName = member.username
             var criterion: Criterion
             
-            if let latestPayment = Payment.getLatestPaymentFor( memberName, payments: payments ){
+            if let latestPayment = Payment.getLatestPaymentForMember( memberName!, payments: payments ){
                 
                 criterion = (
-                    memberName,
-                    Payment.getCreditsFor( memberName, payments: payments ),
+                    memberName!,
+                    Payment.getCreditsForMember( memberName!, payments: payments ),
                     latestPayment.date
                 )
             }
             else { // If no payment record is found, crafts a criterion which makes this member pay next
                 criterion = (
-                    memberName,
+                    memberName!,
                     Int.min,
                     NSDate( timeIntervalSince1970: 0 )
                 )

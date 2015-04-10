@@ -47,7 +47,7 @@ class MembersViewController : UITableViewController {
         User.getMembersInGroup ( groupName ) { (members) -> Void in
             self.members = members
             
-            Payment.getPaymentsForEveryoneIn( self.groupName, callback: { ( payments: [Payment]) -> Void in
+            Payment.getPaymentsForEveryoneInGroup( self.groupName, callback: { ( payments: [Payment]) -> Void in
                 self.payments = payments
                 self.nextMemberToPay = Group.getNextToPay( members, payments )
                 
@@ -58,16 +58,16 @@ class MembersViewController : UITableViewController {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == showProfileSegueId {
-            var destViewController = segue.destinationViewController as ProfileViewController
+            var destViewController = segue.destinationViewController as! ProfileViewController
             
-            destViewController.member = sender as String
+            destViewController.member = sender as! String
             destViewController.group = groupName
             destViewController.payments = payments
             destViewController.members = members
         }
         
         if segue.identifier == showNewPaymentSegueId {
-            var destViewController = segue.destinationViewController as NewPaymentViewController
+            var destViewController = segue.destinationViewController as! NewPaymentViewController
             
             destViewController.group = groupName
             destViewController.members = members
@@ -81,7 +81,7 @@ class MembersViewController : UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let index = indexPath.row
-        var cell = tableView.dequeueReusableCellWithIdentifier( cellIdentifier ) as MemberCell
+        var cell = tableView.dequeueReusableCellWithIdentifier( cellIdentifier ) as! MemberCell
         
         let memberName = members[index].username
         
@@ -93,7 +93,7 @@ class MembersViewController : UITableViewController {
     
     // MARK: UITableViewDelegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath( indexPath ) as MemberCell
+        let cell = tableView.cellForRowAtIndexPath( indexPath ) as! MemberCell
         
         performSegueWithIdentifier( showProfileSegueId, sender: cell.memberNameLabel.text )
     }

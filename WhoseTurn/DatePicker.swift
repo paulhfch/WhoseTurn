@@ -29,5 +29,4 @@ class DatePicker: NSObject {
         
         textField?.text = DayFormatter.stringFromDate( date )
     }
-    
 }

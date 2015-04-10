@@ -32,7 +32,7 @@ class ProfileViewController : UITableViewController {
         super.viewDidAppear( animated )
 
         // Refreshed payments
-        Payment.getPaymentsForEveryoneIn( self.group, callback: { ( payments: [Payment]) -> Void in
+        Payment.getPaymentsForEveryoneInGroup( self.group, callback: { ( payments: [Payment]) -> Void in
             self.payments = payments
             
             self.updateView()
@@ -45,7 +45,7 @@ class ProfileViewController : UITableViewController {
     }
     
     private func updateView(){
-        if let lastPayment = Payment.getLatestPaymentFor( member, payments: payments ) {
+        if let lastPayment = Payment.getLatestPaymentForMember( member, payments: payments ) {
             lastPaymentLabel.text = "\(DayFormatter.stringFromDate( lastPayment.date ))"
         }
         
@@ -53,19 +53,19 @@ class ProfileViewController : UITableViewController {
         numberOfPaymentsLabel.text = "\(paymentOfMember.count)"
         
         
-        let owing = abs( min( 0, Payment.getCreditsFor( self.member, payments: self.payments ) ) )
+        let owing = abs( min( 0, Payment.getCreditsForMember( self.member, payments: self.payments ) ) )
         owingLabel.text = "\(owing)"
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == showPaymentHistorySegueId {
-            var destViewController = segue.destinationViewController as PaymentHistoryViewController
+            var destViewController = segue.destinationViewController as! PaymentHistoryViewController
             
             destViewController.payments = Payment.getPaymentsOfMember( self.member, payments: self.payments )
         }
         
         if segue.identifier == showNewPaymentSegueId {
-            var destViewController = segue.destinationViewController as NewPaymentViewController
+            var destViewController = segue.destinationViewController as! NewPaymentViewController
             
             destViewController.payor = member
             destViewController.group = group

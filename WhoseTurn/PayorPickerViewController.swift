@@ -28,7 +28,7 @@ class PayorPickerViewController : UIPickerView, UIPickerViewDataSource, UIPicker
     func getSelectedPayor() -> String {
         let index = self.selectedRowInComponent( 0 )
         
-        return payors[index].username
+        return payors[index].username!
     }
     
     // MARK: UIPickerViewDataSource

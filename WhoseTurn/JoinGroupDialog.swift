@@ -28,13 +28,13 @@ class JoinGroupDialog {
             style: UIAlertActionStyle.Default) {
                 (_) in
                 
-                let groupNameText = self.dialog.textFields![0] as UITextField
-                let groupCodeText = self.dialog.textFields![1] as UITextField
+                let groupNameText = self.dialog.textFields![0] as! UITextField
+                let groupCodeText = self.dialog.textFields![1] as! UITextField
                 let groupName = groupNameText.text
                 let groupCode = groupCodeText.text
                 
                 if self.validGroupInfo( groupName, groupCode ){
-                    let currentUser = User.currentUser() as User
+                    let currentUser = User.currentUser()! as User
                     if  currentUser.groups == nil {
                         currentUser.groups = [ groupName ]
                     }

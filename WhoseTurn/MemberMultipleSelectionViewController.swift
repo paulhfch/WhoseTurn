@@ -39,7 +39,7 @@ class MemberMultipleSelectionViewController: UITableViewController {
     func getSelectedMembers() -> [String] {
         var selectedMembers = [String]()
         
-        for cell in tableView.visibleCells() as [MemberMultileSelectionCell] {
+        for cell in tableView.visibleCells() as! [MemberMultileSelectionCell] {
             if cell.accessoryType == UITableViewCellAccessoryType.Checkmark {
                 selectedMembers.append( cell.memberNameLabel.text! )
             }
@@ -58,7 +58,7 @@ class MemberMultipleSelectionViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier( cellIdentifier ) as MemberMultileSelectionCell
+        var cell = tableView.dequeueReusableCellWithIdentifier( cellIdentifier ) as! MemberMultileSelectionCell
 
         cell.memberNameLabel.text = members[indexPath.row].username
         
@@ -67,7 +67,7 @@ class MemberMultipleSelectionViewController: UITableViewController {
     
     // MARK: UITableViewDelegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var cell = tableView.cellForRowAtIndexPath( indexPath ) as MemberMultileSelectionCell
+        var cell = tableView.cellForRowAtIndexPath( indexPath ) as! MemberMultileSelectionCell
         
         if cell.accessoryType == UITableViewCellAccessoryType.Checkmark {
             cell.accessoryType = UITableViewCellAccessoryType.None

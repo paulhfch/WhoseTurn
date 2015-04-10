@@ -38,23 +38,23 @@ class GroupTests: XCTestCase {
         let memberOnePaid = Payment()
         memberOnePaid.payor = member1.username
         memberOnePaid.date = DayFormatter.dateFromString( "Jan 01, 2000 Mon" )
-        memberOnePaid.paidFor = [member2.username]
+        memberOnePaid.paidFor = [member2.username!]
         
         let memberOnePaidAgain = Payment()
         memberOnePaidAgain.payor = member1.username
         memberOnePaidAgain.date = DayFormatter.dateFromString( "Jan 01, 2000 Mon" )
-        memberOnePaidAgain.paidFor = [member2.username]
+        memberOnePaidAgain.paidFor = [member2.username!]
         
         // member2 paid once
         let memberTwoPaid = Payment()
         memberTwoPaid.payor = member2.username
         memberTwoPaid.date = DayFormatter.dateFromString( "Jan 01, 2000 Mon" )
-        memberTwoPaid.paidFor = [member1.username]
+        memberTwoPaid.paidFor = [member1.username!]
         
         let payments = [memberOnePaid, memberOnePaidAgain, memberTwoPaid]
         
         XCTAssertEqual( Group.getNextToPay( members, payments ),
-            member2.username,
+            member2.username!,
             "Member 2 should pay next" )
     }
     
@@ -63,10 +63,10 @@ class GroupTests: XCTestCase {
         let payment = Payment()
         payment.payor = member1.username
         payment.date = DayFormatter.dateFromString( "Jan 01, 2000 Mon" )
-        payment.paidFor = [member2.username]
+        payment.paidFor = [member2.username!]
         
         XCTAssertEqual( Group.getNextToPay( members, [payment] ),
-            member2.username,
+            member2.username!,
             "Member 2 should pay next" )
     }
     
@@ -75,18 +75,18 @@ class GroupTests: XCTestCase {
         let memberOnePaid = Payment()
         memberOnePaid.payor = member1.username
         memberOnePaid.date = DayFormatter.dateFromString( "Jan 02, 2000 Tue" )
-        memberOnePaid.paidFor = [member2.username]
+        memberOnePaid.paidFor = [member2.username!]
         
         // member2 paid too, but earlier than last time member1 paid
         let memberTwoPaid = Payment()
         memberTwoPaid.payor = member2.username
         memberTwoPaid.date = DayFormatter.dateFromString( "Jan 01, 2000 Mon" )
-        memberTwoPaid.paidFor = [member1.username]
+        memberTwoPaid.paidFor = [member1.username!]
         
         let payments = [memberOnePaid, memberTwoPaid]
         
         XCTAssertEqual( Group.getNextToPay( members, payments ),
-            member2.username,
+            member2.username!,
             "Member 2 should pay next" )
     }
 }

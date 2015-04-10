@@ -16,9 +16,9 @@ class GroupsViewController : UITableViewController {
     
     func refresh() {
         var user = User.currentUser()
-        user.fetch()
+        user!.fetch()
         
-        groups = user.groups
+        groups = user!.groups
         
         tableView.reloadData()
     }
@@ -26,8 +26,8 @@ class GroupsViewController : UITableViewController {
     // MARK: UIViewController
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == showMemberSegueId {
-            var destViewController = segue.destinationViewController as MembersViewController
-            destViewController.groupName = sender as String
+            var destViewController = segue.destinationViewController as! MembersViewController
+            destViewController.groupName = sender as! String
         }
     }
     
@@ -49,7 +49,7 @@ class GroupsViewController : UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let index = indexPath.row
         
-        var cell = tableView.dequeueReusableCellWithIdentifier( groupCellIdentifier ) as GroupCell
+        var cell = tableView.dequeueReusableCellWithIdentifier( groupCellIdentifier ) as! GroupCell
         
         cell.groupNameLabel.text = groups[index]
 
@@ -66,7 +66,7 @@ class GroupsViewController : UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath( indexPath ) as GroupCell
+        let cell = tableView.cellForRowAtIndexPath( indexPath ) as! GroupCell
         let groupName = cell.groupNameLabel.text
         
         performSegueWithIdentifier( showMemberSegueId, sender: groupName )
@@ -97,11 +97,11 @@ class GroupsViewController : UITableViewController {
             let groupName = self.groups[indexPath.row]
             
             var currentUser = User.currentUser()
-            currentUser.groups.removeAtIndex( indexPath.row )
+            currentUser!.groups.removeAtIndex( indexPath.row )
             self.groups.removeAtIndex( indexPath.row )
             tableView.deleteRowsAtIndexPaths( [indexPath], withRowAnimation: UITableViewRowAnimation.Automatic )
             
-            currentUser.saveInBackgroundWithBlock({ (success: Bool, errro: NSError!) -> Void in
+            currentUser!.saveInBackgroundWithBlock({ (success: Bool, errro: NSError?) -> Void in
                 if !success {
                     UIAlertView(title: "Cannot Leave Group \(groupName)",
                         message: "Are you connected to the Internet?",

@@ -24,19 +24,18 @@ class Payment : PFObject, PFSubclassing {
     @NSManaged var date: NSDate!
     @NSManaged var paidFor: [String]!
     
-    class func parseClassName() -> String! {
+    class func parseClassName() -> String {
         return "Payment"
     }
     
     // MARK: Utils
-    class func getPaymentsForEveryoneIn( group: String, callback: ([Payment]) -> Void ) {
+    class func getPaymentsForEveryoneInGroup( group: String, callback: ([Payment]) -> Void ) {
         let query = Payment.query()
-        query.whereKey( Payment.ColumnKey.group, equalTo: group )
+        query!.whereKey( Payment.ColumnKey.group, equalTo: group )
         
-        query.findObjectsInBackgroundWithBlock { ( payments: [AnyObject]!, error: NSError!) -> Void in
-
+        query!.findObjectsInBackgroundWithBlock { (payments: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {
-                callback( payments as [Payment] )
+                callback( payments as! [Payment] )
             }
             else {
                 callback( [Payment]() )
@@ -48,7 +47,7 @@ class Payment : PFObject, PFSubclassing {
         return payments.filter { $0.payor == member }
     }
     
-    class func getLatestPaymentFor( member: String, payments: [Payment] ) -> Payment? {
+    class func getLatestPaymentForMember( member: String, payments: [Payment] ) -> Payment? {
         var entries = payments.filter { $0.payor == member }
         
         entries.sort { $0.date.compare( $1.date ) == NSComparisonResult.OrderedDescending }
@@ -56,7 +55,7 @@ class Payment : PFObject, PFSubclassing {
         return entries.first
     }
     
-    class func getCreditsFor( member: String, payments: [Payment] ) -> Int {
+    class func getCreditsForMember( member: String, payments: [Payment] ) -> Int {
         var credits = 0
         
         for payment in payments {

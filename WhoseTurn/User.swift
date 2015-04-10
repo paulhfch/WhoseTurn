@@ -18,11 +18,11 @@ class User : PFUser, PFSubclassing {
 
     class func getMembersInGroup( group: String, callback : ( members: [User]! ) -> Void ) {
         let query = User.query()
-        query.whereKey( User.ColumnKey.groups, equalTo: group )
+        query!.whereKey( User.ColumnKey.groups, equalTo: group )
         
-        query.findObjectsInBackgroundWithBlock { ( members: [AnyObject]!, error: NSError!) -> Void in
+        query!.findObjectsInBackgroundWithBlock { ( members: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {
-                callback( members: members as [User]! )
+                callback( members: members as! [User] )
             }
             else {
                 callback( members: nil )

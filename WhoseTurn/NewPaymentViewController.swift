@@ -37,7 +37,7 @@ class NewPaymentViewController : UITableViewController {
 
     private func configurePayorField() {
         if payor == nil {
-            payor = PFUser.currentUser().username
+            payor = User.currentUser()!.username
         }
         
         setPayor( payor!, textField: payorTextbox )
@@ -76,9 +76,9 @@ class NewPaymentViewController : UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == showMembersSegueId {
-            membersPicker = segue.destinationViewController as MemberMultipleSelectionViewController
+            membersPicker = segue.destinationViewController as! MemberMultipleSelectionViewController
             membersPicker.members = members
-            membersPicker.payor = PFUser.currentUser().username
+            membersPicker.payor = User.currentUser()!.username
         }
     }
     
@@ -97,7 +97,7 @@ class NewPaymentViewController : UITableViewController {
     }
     
     @IBAction func onPayButtonTapped(sender: AnyObject) {
-        let payorButton = sender as UIButton
+        let payorButton = sender as! UIButton
         payorButton.enabled = false
         
         var payment = Payment()
@@ -107,7 +107,7 @@ class NewPaymentViewController : UITableViewController {
         payment.date = DayFormatter.dateFromString( dateTextBox.text )
         payment.paidFor = membersPicker.getSelectedMembers()
         
-        payment.saveInBackgroundWithBlock { (success: Bool, error: NSError!) -> Void in
+        payment.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
             if success {
                 self.presentingViewController?.dismissViewControllerAnimated( true, completion: nil )
             }

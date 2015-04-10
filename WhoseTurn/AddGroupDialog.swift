@@ -23,7 +23,7 @@ class AddGroupDialog {
         var addAction = UIAlertAction(title: "Create and Join",
             style: UIAlertActionStyle.Default) {
                 (_) in
-                let groupTextField = self.dialog.textFields![0] as UITextField
+                let groupTextField = self.dialog.textFields![0] as! UITextField
                 let groupName = groupTextField.text
                 
                 if let group = Group.getGroupWithName( groupName ) {
@@ -33,7 +33,7 @@ class AddGroupDialog {
                         cancelButtonTitle: "OK" ).show()
                 }
                 else {
-                    let currentUser = User.currentUser() as User
+                    let currentUser = User.currentUser()! as User
                     if  currentUser.groups == nil {
                         currentUser.groups = [String]()
                     }

@@ -35,8 +35,8 @@ class Settings {
         }
         
         if let plist = settingsPlist {
-            parseAppId = plist[Constants.ParseAppId] as String
-            parseClientKey = plist[Constants.ParseClientKey] as String
+            parseAppId = plist[Constants.ParseAppId] as! String
+            parseClientKey = plist[Constants.ParseClientKey] as! String
         }
     }
 }

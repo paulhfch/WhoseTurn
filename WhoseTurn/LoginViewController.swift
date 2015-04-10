@@ -32,7 +32,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let currentUser = PFUser.currentUser()
         // http://stackoverflow.com/a/12320222
         // The modal view is not in the window's view hierarchy at viewDidLoad
-        if currentUser != nil && currentUser.isAuthenticated() {
+        if currentUser != nil && currentUser!.isAuthenticated() {
             performSegueWithIdentifier( showGroupsSegueId, sender: self )
         }
     }
@@ -43,7 +43,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         PFUser.logInWithUsernameInBackground(
             usernameTextbox.text,
-            password: passwordTextBox.text) { ( user: PFUser!, error: NSError!) -> Void in
+            password: passwordTextBox.text) { ( user: PFUser?, error: NSError?) -> Void in
                 if user != nil {
                     self.performSegueWithIdentifier( showGroupsSegueId, sender: nil )
                 }
@@ -64,7 +64,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         loginButton.userInteractionEnabled = enabled
     }
     
-    func textFieldShouldReturn(textField: UITextField!) -> Bool {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         
         onLoginButtonTapped( textField )
@@ -74,11 +74,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == showGroupsSegueId {
-            let user = User.currentUser() as User
+            let user = User.currentUser() as User?
             
             // segues to GroupsViweController via NavigationViewController
-            var destViewController = segue.destinationViewController.viewControllers![0] as GroupsViewController
-            destViewController.groups = user.groups
+            var destViewController = segue.destinationViewController.viewControllers![0] as! GroupsViewController
+            destViewController.groups = user!.groups
         }
     }
 }

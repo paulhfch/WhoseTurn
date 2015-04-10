@@ -13,7 +13,7 @@ class VerificationCode {
     let code: String
     
     init( from group: Group ){
-        let objectId = group.objectId as NSString
+        let objectId = group.objectId! as NSString
         code = objectId.substringWithRange( NSMakeRange( 1,  4 ) ).uppercaseString
     }
 }

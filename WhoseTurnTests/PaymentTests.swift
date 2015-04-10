@@ -31,7 +31,7 @@ class PaymentTests: XCTestCase {
         latestPayment.payor = payor
         latestPayment.date = DayFormatter.dateFromString( "Jan 03, 2000 Wed" )
         
-        let actual = Payment.getLatestPaymentFor( payor, payments: [payment1, payment2, latestPayment])
+        let actual = Payment.getLatestPaymentForMember( payor, payments: [payment1, payment2, latestPayment])
         
         XCTAssertEqual( actual!, latestPayment, "Should return the latest payment" )
     }
@@ -49,7 +49,7 @@ class PaymentTests: XCTestCase {
         payment2.payor = "otherMember1"
         payment2.paidFor = [ member ]
         
-        let credits = Payment.getCreditsFor( member, payments: [payment1, payment2] )
+        let credits = Payment.getCreditsForMember( member, payments: [payment1, payment2] )
         
         XCTAssertEqual( credits, 1, "Should return 1 credit as a result" )
     }

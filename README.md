@@ -18,7 +18,7 @@ Geoffrey and Paul both spent some time on design and implementation as well as d
 This application is built on the following technology:
 
 - UIKit
-- Swift 1.1
+- Swift 1.2
 - Parse SDK
 - CocoaPods
 - XCTest

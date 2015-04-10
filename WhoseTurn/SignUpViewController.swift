@@ -48,17 +48,17 @@ class SignUpViewController: UITableViewController {
             }
         }
         
-        newUser.signUpInBackgroundWithBlock { ( success: Bool, error: NSError!) -> Void in
+        newUser.signUpInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
             if success {
                 self.presentingViewController?.dismissViewControllerAnimated( true, completion: { () -> Void in
                     
-                    PFUser.logInWithUsername( newUser.username, password: newUser.password )
+                    PFUser.logInWithUsername( newUser.username!, password: newUser.password! )
                     self.presentingViewController?.performSegueWithIdentifier( showGroupsSegueId, sender: nil )
                 })
             }
             else {
                 UIAlertView(title: "Cannot Sign Up",
-                    message: error.userInfo?["error"] as? String,
+                    message: error?.userInfo?["error"] as? String,
                     delegate: nil,
                     cancelButtonTitle: "OK" ).show()
             }
